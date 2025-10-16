@@ -27,8 +27,12 @@ final albumDetailsProvider = Provider<List<AlbumModel>>((ref) {
     }
   }
 
-  // Sort the album details by album name
-  albumDetails.sort((a, b) => a.albumName.compareTo(b.albumName));
+  // Sort the album details by artist name, album name
+  albumDetails.sort((a, b) {
+    final artistCompare = a.albumArtistName.compareTo(b.albumArtistName);
+    if (artistCompare != 0) return artistCompare;
+    return a.albumName.compareTo(b.albumName);
+  });
 
   // Sort the songs in each album by track number
   for (final album in albumDetails) {
