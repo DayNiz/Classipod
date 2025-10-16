@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +27,8 @@ void main() {
       observers: [LoggingObserver()],
       child: DevicePreview(
         tools: const [...DevicePreview.defaultTools, DebuggerToolsSection()],
-        builder:
-            (context) => const AppStartupScreen(app: DevelopmentClassipodApp()),
+        builder: (context) =>
+            const AppStartupScreen(app: DevelopmentClassipodApp()),
       ),
     ),
   );
@@ -77,17 +78,16 @@ class DevelopmentClassipodApp extends ConsumerWidget {
   }
 }
 
-class LoggingObserver extends ProviderObserver {
+final class LoggingObserver extends ProviderObserver {
   @override
   void didUpdateProvider(
-    ProviderBase provider,
+    ProviderObserverContext context,
     Object? previousValue,
     Object? newValue,
-    ProviderContainer container,
   ) {
     debugPrint('''
 {
-  "provider": "${provider.name ?? provider.runtimeType}",
+  "provider": "${context.provider.name ?? context.provider.runtimeType}",
   "previousValue": "$previousValue",
   "newValue": "$newValue"
 }

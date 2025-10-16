@@ -5,11 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final batteryOptimizationProvider =
-    AsyncNotifierProvider.autoDispose<BatteryOptimizationNotifier, bool>(
+    AsyncNotifierProvider<BatteryOptimizationNotifier, bool>(
       BatteryOptimizationNotifier.new,
     );
 
-class BatteryOptimizationNotifier extends AutoDisposeAsyncNotifier<bool> {
+class BatteryOptimizationNotifier extends AsyncNotifier<bool> {
   @override
   Future<bool> build() async {
     return checkBatteryOptimization();

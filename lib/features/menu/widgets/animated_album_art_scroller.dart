@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
@@ -28,11 +29,10 @@ class _AnimatedAlbumArtScrollerState
   bool _isEmptyState = false;
 
   void _getRandomAlbumArt() {
-    final albumDetails =
-        ref
-            .read(albumDetailsProvider)
-            .where((album) => album.albumArtPath != null)
-            .toList();
+    final albumDetails = ref
+        .read(albumDetailsProvider)
+        .where((album) => album.albumArtPath != null)
+        .toList();
     if (albumDetails.isEmpty) {
       setState(() {
         _isEmptyState = true;
@@ -47,10 +47,9 @@ class _AnimatedAlbumArtScrollerState
         Random().nextInt(nonEmptyAlbums.length),
       );
       setState(() {
-        _albumArtImage =
-            randomAlbum.isOnDevice()
-                ? FileImage(File(randomAlbum.albumArtPath!))
-                : NetworkImage(randomAlbum.albumArtPath!);
+        _albumArtImage = randomAlbum.isOnDevice()
+            ? FileImage(File(randomAlbum.albumArtPath!))
+            : NetworkImage(randomAlbum.albumArtPath!);
       });
     }
   }
@@ -84,7 +83,7 @@ class _AnimatedAlbumArtScrollerState
     if (_animationController.isCompleted) {
       _setRandomAnimationDirection();
       _getRandomAlbumArt();
-      _animationController.repeat(count: 1);
+      unawaited(_animationController.repeat(count: 1));
     }
   }
 
@@ -98,7 +97,7 @@ class _AnimatedAlbumArtScrollerState
     );
     if (!_isEmptyState) {
       _setRandomAnimationDirection();
-      _animationController.forward();
+      unawaited(_animationController.forward());
       _animationController.addListener(_repeatAnimation);
     }
   }
