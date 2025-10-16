@@ -27,19 +27,17 @@ class ShuffleSegmentedControl extends StatelessWidget {
             false: Text(
               context.localization.tileValueOff,
               style: TextStyle(
-                color:
-                    !isShuffleEnabled
-                        ? AppPalette.selectedTileGradientColor2
-                        : null,
+                color: !isShuffleEnabled
+                    ? AppPalette.selectedTileGradientColor2
+                    : null,
               ),
             ),
             true: Text(
               context.localization.songsScreenTitle,
               style: TextStyle(
-                color:
-                    isShuffleEnabled
-                        ? AppPalette.selectedTileGradientColor2
-                        : null,
+                color: isShuffleEnabled
+                    ? AppPalette.selectedTileGradientColor2
+                    : null,
               ),
             ),
           },

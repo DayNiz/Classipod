@@ -148,8 +148,8 @@ final splitScreenViewControllerProvider = Provider<SplitScreenViewController>((
 final routerProvider = Provider(
   (ref) => GoRouter(
     initialLocation: Routes.splash.toString(),
-    errorPageBuilder:
-        (context, state) => const CupertinoPage(child: PageNotFoundScreen()),
+    errorPageBuilder: (context, state) =>
+        const CupertinoPage(child: PageNotFoundScreen()),
     routes: [
       ShellRoute(
         navigatorKey: rootNavigatorKey,
@@ -168,62 +168,53 @@ final routerProvider = Provider(
           GoRoute(
             path: Routes.splash.toString(),
             name: Routes.splash.name,
-            pageBuilder:
-                (context, state) => const CupertinoPage(child: SplashScreen()),
+            pageBuilder: (context, state) =>
+                const CupertinoPage(child: SplashScreen()),
           ),
           ShellRoute(
             parentNavigatorKey: rootNavigatorKey,
             navigatorKey: menuNavigatorKey,
-            pageBuilder:
-                (context, state, child) => CustomTransitionPage(
-                  child: SplitScreenPlaceholder(
-                    splitScreenController: ref.read(
-                      splitScreenViewControllerProvider,
-                    ),
-                    child: child,
-                  ),
-                  transitionsBuilder: (
-                    context,
-                    animation,
-                    secondaryAnimation,
-                    child,
-                  ) {
+            pageBuilder: (context, state, child) => CustomTransitionPage(
+              child: SplitScreenPlaceholder(
+                splitScreenController: ref.read(
+                  splitScreenViewControllerProvider,
+                ),
+                child: child,
+              ),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
                     return FadeTransition(opacity: animation, child: child);
                   },
-                ),
+            ),
             routes: [
               GoRoute(
                 path: Routes.menu.toString(),
                 name: Routes.menu.name,
                 parentNavigatorKey: menuNavigatorKey,
-                pageBuilder:
-                    (context, state) =>
-                        const CupertinoPage(child: MainMenuScreen()),
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: MainMenuScreen()),
                 routes: [
                   GoRoute(
                     path: Routes.settings.name,
                     name: Routes.settings.name,
                     parentNavigatorKey: menuNavigatorKey,
-                    pageBuilder:
-                        (context, state) =>
-                            const CupertinoPage(child: SettingsScreen()),
+                    pageBuilder: (context, state) =>
+                        const CupertinoPage(child: SettingsScreen()),
                     routes: [
                       GoRoute(
                         path: Routes.about.name,
                         name: Routes.about.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) =>
-                                const CupertinoPage(child: AboutScreen()),
+                        pageBuilder: (context, state) =>
+                            const CupertinoPage(child: AboutScreen()),
                       ),
                       GoRoute(
                         path: Routes.language.name,
                         name: Routes.language.name,
                         parentNavigatorKey: menuNavigatorKey,
-                        pageBuilder:
-                            (context, state) => const CupertinoPage(
-                              child: LanguageSelectionScreen(),
-                            ),
+                        pageBuilder: (context, state) => const CupertinoPage(
+                          child: LanguageSelectionScreen(),
+                        ),
                       ),
                       GoRoute(
                         path: Routes.excludeDirectories.name,
@@ -237,10 +228,9 @@ final routerProvider = Provider(
                               .rescanMusicFiles();
                           return true;
                         },
-                        pageBuilder:
-                            (context, state) => const CupertinoPage(
-                              child: ExcludeDirectoriesScreen(),
-                            ),
+                        pageBuilder: (context, state) => const CupertinoPage(
+                          child: ExcludeDirectoriesScreen(),
+                        ),
                       ),
                     ],
                   ),
@@ -255,21 +245,17 @@ final routerProvider = Provider(
                               .splitScreenEnabled) {
                         return CustomTransitionPage(
                           child: const NowPlayingScreen(),
-                          transitionsBuilder: (
-                            context,
-                            animation,
-                            reversedAnimation,
-                            child,
-                          ) {
-                            return FadeTransition(
-                              opacity: CurvedAnimation(
-                                parent: animation,
-                                curve: Curves.easeInQuint,
-                                reverseCurve: Curves.easeOutQuint,
-                              ),
-                              child: child,
-                            );
-                          },
+                          transitionsBuilder:
+                              (context, animation, reversedAnimation, child) {
+                                return FadeTransition(
+                                  opacity: CurvedAnimation(
+                                    parent: animation,
+                                    curve: Curves.easeInQuint,
+                                    reverseCurve: Curves.easeOutQuint,
+                                  ),
+                                  child: child,
+                                );
+                              },
                         );
                       }
 
@@ -280,16 +266,12 @@ final routerProvider = Provider(
                         path: Routes.nowPlayingMoreOptions.name,
                         name: Routes.nowPlayingMoreOptions.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) => OptionsModalPage(
-                              context: context,
-                              title: Routes.nowPlayingMoreOptions.title(
-                                context,
-                              ),
-                              builder:
-                                  (context) =>
-                                      const NowPlayingMoreOptionsModal(),
-                            ),
+                        pageBuilder: (context, state) => OptionsModalPage(
+                          context: context,
+                          title: Routes.nowPlayingMoreOptions.title(context),
+                          builder: (context) =>
+                              const NowPlayingMoreOptionsModal(),
+                        ),
                       ),
                     ],
                   ),
@@ -297,9 +279,8 @@ final routerProvider = Provider(
                     path: Routes.musicMenu.toString(),
                     name: Routes.musicMenu.name,
                     parentNavigatorKey: menuNavigatorKey,
-                    pageBuilder:
-                        (context, state) =>
-                            const CupertinoPage(child: MusicMenuScreen()),
+                    pageBuilder: (context, state) =>
+                        const CupertinoPage(child: MusicMenuScreen()),
                     routes: [
                       GoRoute(
                         path: Routes.coverFlow.name,
@@ -312,21 +293,22 @@ final routerProvider = Provider(
                                   .splitScreenEnabled) {
                             return CustomTransitionPage(
                               child: const CoverFlowScreen(),
-                              transitionsBuilder: (
-                                context,
-                                animation,
-                                reversedAnimation,
-                                child,
-                              ) {
-                                return FadeTransition(
-                                  opacity: CurvedAnimation(
-                                    parent: animation,
-                                    curve: Curves.easeInQuint,
-                                    reverseCurve: Curves.easeOutQuint,
-                                  ),
-                                  child: child,
-                                );
-                              },
+                              transitionsBuilder:
+                                  (
+                                    context,
+                                    animation,
+                                    reversedAnimation,
+                                    child,
+                                  ) {
+                                    return FadeTransition(
+                                      opacity: CurvedAnimation(
+                                        parent: animation,
+                                        curve: Curves.easeInQuint,
+                                        reverseCurve: Curves.easeOutQuint,
+                                      ),
+                                      child: child,
+                                    );
+                                  },
                             );
                           }
                           return const CupertinoPage(child: CoverFlowScreen());
@@ -336,8 +318,8 @@ final routerProvider = Provider(
                             path: Routes.coverFlowSelection.name,
                             name: Routes.coverFlowSelection.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => CustomTransitionPage(
+                            pageBuilder: (context, state) =>
+                                CustomTransitionPage(
                                   opaque: false,
                                   barrierColor: kCupertinoModalBarrierColor,
                                   transitionDuration: const Duration(
@@ -346,8 +328,8 @@ final routerProvider = Provider(
                                   reverseTransitionDuration: const Duration(
                                     milliseconds: 500,
                                   ),
-                                  transitionsBuilder:
-                                      (context, _, _, child) => child,
+                                  transitionsBuilder: (context, _, _, child) =>
+                                      child,
                                   child: CoverFlowAlbumSelectionScreen(
                                     albumDetail: state.extra as AlbumModel,
                                   ),
@@ -359,39 +341,35 @@ final routerProvider = Provider(
                         path: Routes.artists.name,
                         name: Routes.artists.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) => const CupertinoPage(
-                              child: ArtistsSelectionScreen(),
-                            ),
+                        pageBuilder: (context, state) => const CupertinoPage(
+                          child: ArtistsSelectionScreen(),
+                        ),
                         routes: [
                           GoRoute(
                             path: ":artistName",
                             name: Routes.artistAlbums.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => CupertinoPage(
-                                  child: ArtistAlbumsScreen(
-                                    artistName:
-                                        state.pathParameters["artistName"] ??
-                                        "",
-                                  ),
-                                ),
+                            pageBuilder: (context, state) => CupertinoPage(
+                              child: ArtistAlbumsScreen(
+                                artistName:
+                                    state.pathParameters["artistName"] ?? "",
+                              ),
+                            ),
                             routes: [
                               GoRoute(
                                 path: Routes.artistAlbumsMoreOptions.name,
                                 name: Routes.artistAlbumsMoreOptions.name,
                                 parentNavigatorKey: rootNavigatorKey,
-                                pageBuilder:
-                                    (context, state) => OptionsModalPage(
+                                pageBuilder: (context, state) =>
+                                    OptionsModalPage(
                                       context: context,
                                       title: Routes.artistAlbumsMoreOptions
                                           .title(context),
-                                      builder:
-                                          (context) => AlbumMoreOptionsModal(
-                                            routeName:
-                                                Routes
-                                                    .artistAlbumsMoreOptions
-                                                    .name,
+                                      builder: (context) =>
+                                          AlbumMoreOptionsModal(
+                                            routeName: Routes
+                                                .artistAlbumsMoreOptions
+                                                .name,
                                             albumDetail:
                                                 state.extra as AlbumModel,
                                             showBrowseArtist: false,
@@ -406,38 +384,34 @@ final routerProvider = Provider(
                         path: Routes.albums.name,
                         name: Routes.albums.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) => const CupertinoPage(
-                              child: AlbumsSelectionScreen(),
-                            ),
+                        pageBuilder: (context, state) =>
+                            const CupertinoPage(child: AlbumsSelectionScreen()),
                         routes: [
                           GoRoute(
                             path: Routes.albumSongs.name,
                             name: Routes.albumSongs.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => CupertinoPage(
-                                  child: AlbumSongsScreen(
-                                    albumDetail: state.extra as AlbumModel,
-                                  ),
-                                ),
+                            pageBuilder: (context, state) => CupertinoPage(
+                              child: AlbumSongsScreen(
+                                albumDetail: state.extra as AlbumModel,
+                              ),
+                            ),
                             routes: [
                               GoRoute(
                                 path: Routes.albumSongsMoreOptions.name,
                                 name: Routes.albumSongsMoreOptions.name,
                                 parentNavigatorKey: rootNavigatorKey,
-                                pageBuilder:
-                                    (context, state) => OptionsModalPage(
+                                pageBuilder: (context, state) =>
+                                    OptionsModalPage(
                                       context: context,
                                       title: Routes.albumSongsMoreOptions.title(
                                         context,
                                       ),
-                                      builder:
-                                          (context) => SongsMoreOptionsModal(
-                                            routeName:
-                                                Routes
-                                                    .albumSongsMoreOptions
-                                                    .name,
+                                      builder: (context) =>
+                                          SongsMoreOptionsModal(
+                                            routeName: Routes
+                                                .albumSongsMoreOptions
+                                                .name,
                                             currentSongMetadata:
                                                 state.extra as MusicMetadata,
                                             showAdditionalOptions: false,
@@ -450,16 +424,14 @@ final routerProvider = Provider(
                             path: Routes.albumMoreOptions.name,
                             name: Routes.albumMoreOptions.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => OptionsModalPage(
-                                  context: context,
-                                  title: Routes.albumMoreOptions.title(context),
-                                  builder:
-                                      (context) => AlbumMoreOptionsModal(
-                                        routeName: Routes.albumMoreOptions.name,
-                                        albumDetail: state.extra as AlbumModel,
-                                      ),
-                                ),
+                            pageBuilder: (context, state) => OptionsModalPage(
+                              context: context,
+                              title: Routes.albumMoreOptions.title(context),
+                              builder: (context) => AlbumMoreOptionsModal(
+                                routeName: Routes.albumMoreOptions.name,
+                                albumDetail: state.extra as AlbumModel,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -467,49 +439,45 @@ final routerProvider = Provider(
                         path: Routes.playlists.name,
                         name: Routes.playlists.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) => const CupertinoPage(
-                              maintainState: false,
-                              child: PlaylistsScreen(),
-                            ),
+                        pageBuilder: (context, state) => const CupertinoPage(
+                          maintainState: false,
+                          child: PlaylistsScreen(),
+                        ),
                         routes: [
                           GoRoute(
                             path: Routes.playlistSongs.name,
                             name: Routes.playlistSongs.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => CupertinoPage(
-                                  child: PlaylistSongsScreen(
-                                    playlistKey: int.tryParse(
-                                      state.extra as String,
-                                    ),
-                                  ),
+                            pageBuilder: (context, state) => CupertinoPage(
+                              child: PlaylistSongsScreen(
+                                playlistKey: int.tryParse(
+                                  state.extra as String,
                                 ),
+                              ),
+                            ),
                             routes: [
                               GoRoute(
                                 path: Routes.playlistSongsMoreOptions.name,
                                 name: Routes.playlistSongsMoreOptions.name,
                                 parentNavigatorKey: rootNavigatorKey,
-                                pageBuilder:
-                                    (context, state) => OptionsModalPage(
+                                pageBuilder: (context, state) =>
+                                    OptionsModalPage(
                                       context: context,
                                       title: Routes.playlistSongsMoreOptions
                                           .title(context),
-                                      builder:
-                                          (context) =>
-                                              const PlaylistSongsMoreOptionsModal(),
+                                      builder: (context) =>
+                                          const PlaylistSongsMoreOptionsModal(),
                                     ),
                               ),
                               GoRoute(
                                 path: Routes.playlistRename.name,
                                 name: Routes.playlistRename.name,
                                 parentNavigatorKey: rootNavigatorKey,
-                                pageBuilder:
-                                    (context, state) => CupertinoPage(
-                                      child: PlaylistRenameScreen(
-                                        oldPlaylistName: state.extra as String,
-                                      ),
-                                    ),
+                                pageBuilder: (context, state) => CupertinoPage(
+                                  child: PlaylistRenameScreen(
+                                    oldPlaylistName: state.extra as String,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -519,25 +487,22 @@ final routerProvider = Provider(
                         path: Routes.songs.name,
                         name: Routes.songs.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) =>
-                                const CupertinoPage(child: SongsScreen()),
+                        pageBuilder: (context, state) =>
+                            const CupertinoPage(child: SongsScreen()),
                         routes: [
                           GoRoute(
                             path: Routes.songsMoreOptions.name,
                             name: Routes.songsMoreOptions.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => OptionsModalPage(
-                                  context: context,
-                                  title: Routes.songsMoreOptions.title(context),
-                                  builder:
-                                      (context) => SongsMoreOptionsModal(
-                                        routeName: Routes.songsMoreOptions.name,
-                                        currentSongMetadata:
-                                            state.extra as MusicMetadata,
-                                      ),
-                                ),
+                            pageBuilder: (context, state) => OptionsModalPage(
+                              context: context,
+                              title: Routes.songsMoreOptions.title(context),
+                              builder: (context) => SongsMoreOptionsModal(
+                                routeName: Routes.songsMoreOptions.name,
+                                currentSongMetadata:
+                                    state.extra as MusicMetadata,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -545,37 +510,34 @@ final routerProvider = Provider(
                         path: Routes.genres.toString(),
                         name: Routes.genres.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) =>
-                                const CupertinoPage(child: GenresScreen()),
+                        pageBuilder: (context, state) =>
+                            const CupertinoPage(child: GenresScreen()),
                         routes: [
                           GoRoute(
                             path: ":genreName",
                             name: Routes.genreSongs.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => CupertinoPage(
-                                  child: GenreSongsScreen(
-                                    genreName:
-                                        state.pathParameters["genreName"] ?? '',
-                                  ),
-                                ),
+                            pageBuilder: (context, state) => CupertinoPage(
+                              child: GenreSongsScreen(
+                                genreName:
+                                    state.pathParameters["genreName"] ?? '',
+                              ),
+                            ),
                             routes: [
                               GoRoute(
                                 path: Routes.genresSongsMoreOptions.name,
                                 name: Routes.genresSongsMoreOptions.name,
                                 parentNavigatorKey: rootNavigatorKey,
-                                pageBuilder:
-                                    (context, state) => OptionsModalPage(
+                                pageBuilder: (context, state) =>
+                                    OptionsModalPage(
                                       context: context,
                                       title: Routes.genresSongsMoreOptions
                                           .title(context),
-                                      builder:
-                                          (context) => SongsMoreOptionsModal(
-                                            routeName:
-                                                Routes
-                                                    .genresSongsMoreOptions
-                                                    .name,
+                                      builder: (context) =>
+                                          SongsMoreOptionsModal(
+                                            routeName: Routes
+                                                .genresSongsMoreOptions
+                                                .name,
                                             currentSongMetadata:
                                                 state.extra as MusicMetadata,
                                           ),
@@ -589,32 +551,25 @@ final routerProvider = Provider(
                         path: Routes.search.name,
                         name: Routes.search.name,
                         parentNavigatorKey: rootNavigatorKey,
-                        pageBuilder:
-                            (context, state) =>
-                                const CupertinoPage(child: SearchScreen()),
+                        pageBuilder: (context, state) =>
+                            const CupertinoPage(child: SearchScreen()),
                         routes: [
                           GoRoute(
                             path: Routes.searchMoreOptions.name,
                             name: Routes.searchMoreOptions.name,
                             parentNavigatorKey: rootNavigatorKey,
-                            pageBuilder:
-                                (context, state) => OptionsModalPage(
-                                  context: context,
-                                  title: Routes.searchMoreOptions.title(
-                                    context,
-                                  ),
-                                  builder:
-                                      (context) => SearchMoreOptionsModal(
-                                        songMetadata:
-                                            (state.extra is MusicMetadata)
-                                                ? state.extra as MusicMetadata
-                                                : null,
-                                        albumDetail:
-                                            (state.extra is AlbumModel)
-                                                ? state.extra as AlbumModel
-                                                : null,
-                                      ),
-                                ),
+                            pageBuilder: (context, state) => OptionsModalPage(
+                              context: context,
+                              title: Routes.searchMoreOptions.title(context),
+                              builder: (context) => SearchMoreOptionsModal(
+                                songMetadata: (state.extra is MusicMetadata)
+                                    ? state.extra as MusicMetadata
+                                    : null,
+                                albumDetail: (state.extra is AlbumModel)
+                                    ? state.extra as AlbumModel
+                                    : null,
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -34,25 +34,23 @@ class AlbumListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            border:
-                isSelected
-                    ? null
-                    : const Border(
-                      bottom: BorderSide(
-                        color: AppPalette.lightDeviceFrameGradientColor1,
-                      ),
+            border: isSelected
+                ? null
+                : const Border(
+                    bottom: BorderSide(
+                      color: AppPalette.lightDeviceFrameGradientColor1,
                     ),
-            gradient:
-                isSelected
-                    ? const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppPalette.selectedTileGradientColor1,
-                        AppPalette.selectedTileGradientColor2,
-                      ],
-                    )
-                    : null,
+                  ),
+            gradient: isSelected
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppPalette.selectedTileGradientColor1,
+                      AppPalette.selectedTileGradientColor2,
+                    ],
+                  )
+                : null,
           ),
           child: Row(
             children: [
@@ -73,17 +71,15 @@ class AlbumListTile extends StatelessWidget {
                 ),
               if (!isAllSongsAlbum)
                 Image(
-                  image:
-                      (albumDetails.albumArtPath != null)
-                          ? albumDetails.isOnDevice()
-                              ? FileImage(File(albumDetails.albumArtPath!))
-                              : NetworkImage(albumDetails.albumArtPath!)
-                          : const AssetImage(Assets.defaultAlbumCoverImage),
-                  errorBuilder:
-                      (_, _, _) => Image.asset(
-                        Assets.defaultAlbumCoverImage,
-                        fit: BoxFit.fitWidth,
-                      ),
+                  image: (albumDetails.albumArtPath != null)
+                      ? albumDetails.isOnDevice()
+                            ? FileImage(File(albumDetails.albumArtPath!))
+                            : NetworkImage(albumDetails.albumArtPath!)
+                      : const AssetImage(Assets.defaultAlbumCoverImage),
+                  errorBuilder: (_, _, _) => Image.asset(
+                    Assets.defaultAlbumCoverImage,
+                    fit: BoxFit.fitWidth,
+                  ),
                   height: 54,
                   width: 54,
                 ),
@@ -98,10 +94,9 @@ class AlbumListTile extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color:
-                            isSelected
-                                ? CupertinoColors.white
-                                : CupertinoColors.black,
+                        color: isSelected
+                            ? CupertinoColors.white
+                            : CupertinoColors.black,
                       ),
                       maxLines: 1,
                     ),
@@ -110,13 +105,12 @@ class AlbumListTile extends StatelessWidget {
                       showArtistName
                           ? albumDetails.albumArtistName
                           : context.localization.nSongs(
-                            albumDetails.albumSongs.length,
-                          ),
+                              albumDetails.albumSongs.length,
+                            ),
                       style: TextStyle(
-                        color:
-                            isSelected
-                                ? CupertinoColors.white
-                                : AppPalette.hintTextColor,
+                        color: isSelected
+                            ? CupertinoColors.white
+                            : AppPalette.hintTextColor,
                       ),
                       maxLines: 1,
                     ),

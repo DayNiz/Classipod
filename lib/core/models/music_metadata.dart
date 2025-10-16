@@ -107,10 +107,9 @@ class MusicMetadata extends HiveObject {
       year: audioMetadata.year?.year,
       genres: audioMetadata.genres,
       discNumber: audioMetadata.discNumber,
-      mimeType:
-          audioMetadata.pictures.isEmpty
-              ? null
-              : audioMetadata.pictures[0].mimetype,
+      mimeType: audioMetadata.pictures.isEmpty
+          ? null
+          : audioMetadata.pictures[0].mimetype,
       trackDuration: audioMetadata.duration?.inMilliseconds,
       bitrate: audioMetadata.bitrate,
       filePath: audioMetadata.file.path,
@@ -214,14 +213,12 @@ class MusicMetadata extends HiveObject {
           album: albumName ?? "Unknown Album",
           artist: getTrackArtistNames,
           genre: genres.isEmpty ? null : genres[0],
-          duration:
-              trackDuration != null
-                  ? Duration(milliseconds: trackDuration!)
-                  : null,
-          artUri:
-              thumbnailPath == null
-                  ? Uri.file(filePath!)
-                  : Uri.file(thumbnailPath!),
+          duration: trackDuration != null
+              ? Duration(milliseconds: trackDuration!)
+              : null,
+          artUri: thumbnailPath == null
+              ? Uri.file(filePath!)
+              : Uri.file(thumbnailPath!),
           rating: Rating.newStarRating(RatingStyle.range5stars, rating),
           extras: {"loadThumbnailUri": true},
         ),
@@ -235,14 +232,12 @@ class MusicMetadata extends HiveObject {
           album: albumName ?? "Unknown Album",
           artist: getTrackArtistNames,
           genre: genres.isEmpty ? null : genres[0],
-          duration:
-              trackDuration != null
-                  ? Duration(milliseconds: trackDuration!)
-                  : null,
-          artUri:
-              thumbnailPath == null
-                  ? Uri.parse(Constants.defaultNotificationAlbumArtImageUrl)
-                  : Uri.file(thumbnailPath!),
+          duration: trackDuration != null
+              ? Duration(milliseconds: trackDuration!)
+              : null,
+          artUri: thumbnailPath == null
+              ? Uri.parse(Constants.defaultNotificationAlbumArtImageUrl)
+              : Uri.file(thumbnailPath!),
           rating: Rating.newStarRating(RatingStyle.range5stars, rating),
         ),
       );

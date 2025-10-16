@@ -15,11 +15,10 @@ class AppStartupScreen extends ConsumerWidget {
     return appStartupState.when(
       skipLoadingOnReload: false,
       loading: () => const AppStartupLoading(),
-      error:
-          (e, _) => AppStartupError(
-            error: e,
-            onRetry: () => ref.invalidate(appStartupControllerProvider),
-          ),
+      error: (e, _) => AppStartupError(
+        error: e,
+        onRetry: () => ref.invalidate(appStartupControllerProvider),
+      ),
       data: (_) => app,
     );
   }

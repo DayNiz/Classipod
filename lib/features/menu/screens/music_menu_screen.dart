@@ -110,12 +110,11 @@ class _MusicMenuScreenState extends ConsumerState<MusicMenuScreen>
                   text: '',
                   isSelected: false,
                 ),
-                itemBuilder:
-                    (context, index) => DisplayListTile(
-                      text: displayItems[index].title(context),
-                      isSelected: selectedDisplayItem == index,
-                      onTap: () async => _navigateToScreen(displayItems[index]),
-                    ),
+                itemBuilder: (context, index) => DisplayListTile(
+                  text: displayItems[index].title(context),
+                  isSelected: selectedDisplayItem == index,
+                  onTap: () async => _navigateToScreen(displayItems[index]),
+                ),
               ),
             ),
           ),

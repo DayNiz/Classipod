@@ -61,10 +61,9 @@ class _GenreSongsScreenState extends ConsumerState<GenreSongsScreen>
 
   @override
   Widget build(BuildContext context) {
-    final int? currentlyPlayingOriginalIndex =
-        ref
-            .watch(nowPlayingDetailsProvider.select((e) => e.currentMetadata))
-            ?.originalSongIndex;
+    final int? currentlyPlayingOriginalIndex = ref
+        .watch(nowPlayingDetailsProvider.select((e) => e.currentMetadata))
+        ?.originalSongIndex;
     return CupertinoPageScaffold(
       child: Column(
         children: [
@@ -82,17 +81,15 @@ class _GenreSongsScreenState extends ConsumerState<GenreSongsScreen>
                   onTap: () {},
                   onLongPress: () {},
                 ),
-                itemBuilder:
-                    (context, index) => AlbumArtSongListTile(
-                      songMetadata: displayItems[index],
-                      isSelected: selectedDisplayItem == index,
-                      isCurrentlyPlaying:
-                          currentlyPlayingOriginalIndex ==
-                          displayItems[index].originalSongIndex,
-                      onTap: () async => _playSong(index),
-                      onLongPress:
-                          () => _navigateToGenreMoreOptionsModal(index),
-                    ),
+                itemBuilder: (context, index) => AlbumArtSongListTile(
+                  songMetadata: displayItems[index],
+                  isSelected: selectedDisplayItem == index,
+                  isCurrentlyPlaying:
+                      currentlyPlayingOriginalIndex ==
+                      displayItems[index].originalSongIndex,
+                  onTap: () async => _playSong(index),
+                  onLongPress: () => _navigateToGenreMoreOptionsModal(index),
+                ),
               ),
             ),
           ),

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
@@ -20,7 +21,7 @@ class _AnimatedHandIconState extends State<AnimatedHandIcon>
       duration: const Duration(seconds: 10),
       vsync: this,
     );
-    _controller.repeat();
+    unawaited(_controller.repeat());
   }
 
   @override

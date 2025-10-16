@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'dart:math';
 
@@ -115,8 +116,10 @@ class _SegmentState<T> extends State<_Segment<T>>
           end: widget.shouldScaleContent ? _kMinThumbScale : 1.0,
         ),
       );
-      highlightPressScaleController.animateWith(
-        _kThumbSpringAnimationSimulation,
+      unawaited(
+        highlightPressScaleController.animateWith(
+          _kThumbSpringAnimationSimulation,
+        ),
       );
     }
   }
@@ -141,8 +144,9 @@ class _SegmentState<T> extends State<_Segment<T>>
         alignment: Alignment.center,
         children: <Widget>[
           AnimatedOpacity(
-            opacity:
-                widget.shouldFadeoutContent ? _kContentPressedMinOpacity : 1,
+            opacity: widget.shouldFadeoutContent
+                ? _kContentPressedMinOpacity
+                : 1,
             duration: _kOpacityAnimationDuration,
             curve: Curves.ease,
             child: AnimatedDefaultTextStyle(
@@ -208,10 +212,12 @@ class _SegmentSeparatorState extends State<_SegmentSeparator>
     assert(oldWidget.key == widget.key);
 
     if (oldWidget.highlighted != widget.highlighted) {
-      separatorOpacityController.animateTo(
-        widget.highlighted ? 0 : 1,
-        duration: _kSpringAnimationDuration,
-        curve: Curves.ease,
+      unawaited(
+        separatorOpacityController.animateTo(
+          widget.highlighted ? 0 : 1,
+          duration: _kSpringAnimationDuration,
+          curve: Curves.ease,
+        ),
       );
     }
   }
@@ -335,7 +341,7 @@ class _SegmentedControlState<T extends Object>
     super.didUpdateWidget(oldWidget);
 
     if (!isThumbDragging && highlighted != widget.groupValue) {
-      thumbController.animateWith(_kThumbSpringAnimationSimulation);
+      unawaited(thumbController.animateWith(_kThumbSpringAnimationSimulation));
       thumbAnimatable = null;
       highlighted = widget.groupValue;
     }
@@ -401,7 +407,9 @@ class _SegmentedControlState<T extends Object>
         end: isExpanding ? 1 : _kMinThumbScale,
       ),
     );
-    thumbScaleController.animateWith(_kThumbSpringAnimationSimulation);
+    unawaited(
+      thumbScaleController.animateWith(_kThumbSpringAnimationSimulation),
+    );
   }
 
   void onHighlightChangedByGesture(T newValue) {
@@ -413,7 +421,7 @@ class _SegmentedControlState<T extends Object>
       highlighted = newValue;
     });
 
-    thumbController.animateWith(_kThumbSpringAnimationSimulation);
+    unawaited(thumbController.animateWith(_kThumbSpringAnimationSimulation));
     thumbAnimatable = null;
   }
 
@@ -466,10 +474,9 @@ class _SegmentedControlState<T extends Object>
       onPressedChangedByGesture(touchDownSegment);
       onHighlightChangedByGesture(touchDownSegment);
     } else {
-      final T? segment =
-          _hasDraggedTooFar(details)
-              ? null
-              : segmentForXPosition(details.localPosition.dx);
+      final T? segment = _hasDraggedTooFar(details)
+          ? null
+          : segmentForXPosition(details.localPosition.dx);
       onPressedChangedByGesture(segment);
     }
   }

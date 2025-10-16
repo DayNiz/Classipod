@@ -23,8 +23,9 @@ class _VolumeBarState extends ConsumerState<VolumeBar> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final volumeMode =
-          ref.read(settingsPreferencesControllerProvider).volumeMode;
+      final volumeMode = ref
+          .read(settingsPreferencesControllerProvider)
+          .volumeMode;
       if (volumeMode == VolumeMode.app) {
         _volumeSubscription = ref
             .read(audioPlayerProvider)

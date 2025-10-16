@@ -170,10 +170,9 @@ class _InputTextBarState extends State<InputTextBar> {
                           width: Constants.inputTextAlphabetSize,
                           height: Constants.inputTextAlphabetSize,
                           child: ColoredBox(
-                            color:
-                                (_currentSelectedIndex == index)
-                                    ? AppPalette.selectedTileGradientColor1
-                                    : CupertinoColors.black,
+                            color: (_currentSelectedIndex == index)
+                                ? AppPalette.selectedTileGradientColor1
+                                : CupertinoColors.black,
                             child: Center(
                               child: Text(
                                 alphabets[index],

@@ -28,17 +28,16 @@ class CoverFlowAlbumSongListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            gradient:
-                isSelected
-                    ? const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppPalette.selectedTileGradientColor1,
-                        AppPalette.selectedTileGradientColor2,
-                      ],
-                    )
-                    : null,
+            gradient: isSelected
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppPalette.selectedTileGradientColor1,
+                      AppPalette.selectedTileGradientColor2,
+                    ],
+                  )
+                : null,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -52,36 +51,32 @@ class CoverFlowAlbumSongListTile extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:
-                          isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
+                      color: isSelected
+                          ? CupertinoColors.white
+                          : CupertinoColors.black,
                     ),
                   ),
                 ),
                 Flexible(
-                  child:
-                      isCurrentlyPlaying
-                          ? Icon(
-                            CupertinoIcons.volume_up,
-                            size: 16,
-                            color:
-                                isSelected
-                                    ? CupertinoColors.white
-                                    : CupertinoColors.black,
-                          )
-                          : Text(
-                            songDuration.getMinuteAndSecondString,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  isSelected
-                                      ? CupertinoColors.white
-                                      : CupertinoColors.black,
-                            ),
-                            maxLines: 1,
+                  child: isCurrentlyPlaying
+                      ? Icon(
+                          CupertinoIcons.volume_up,
+                          size: 16,
+                          color: isSelected
+                              ? CupertinoColors.white
+                              : CupertinoColors.black,
+                        )
+                      : Text(
+                          songDuration.getMinuteAndSecondString,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: isSelected
+                                ? CupertinoColors.white
+                                : CupertinoColors.black,
                           ),
+                          maxLines: 1,
+                        ),
                 ),
               ],
             ),

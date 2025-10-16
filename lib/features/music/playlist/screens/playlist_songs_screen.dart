@@ -36,11 +36,10 @@ class _PlaylistsSongsScreenState extends ConsumerState<PlaylistSongsScreen>
   int get extraDisplayItems => 2;
 
   @override
-  List<MusicMetadata> get displayItems =>
-      ref
-          .watch(playlistsProvider)
-          .firstWhere((e) => e.key == widget.playlistKey)
-          .songs;
+  List<MusicMetadata> get displayItems => ref
+      .watch(playlistsProvider)
+      .firstWhere((e) => e.key == widget.playlistKey)
+      .songs;
 
   PlaylistModel get playlist => ref
       .read(playlistsProvider)
@@ -145,10 +144,9 @@ class _PlaylistsSongsScreenState extends ConsumerState<PlaylistSongsScreen>
       );
     }
 
-    final int? currentlyPlayingOriginalIndex =
-        ref
-            .watch(nowPlayingDetailsProvider.select((e) => e.currentMetadata))
-            ?.originalSongIndex;
+    final int? currentlyPlayingOriginalIndex = ref
+        .watch(nowPlayingDetailsProvider.select((e) => e.currentMetadata))
+        ?.originalSongIndex;
 
     return CupertinoPageScaffold(
       child: Column(
@@ -170,10 +168,9 @@ class _PlaylistsSongsScreenState extends ConsumerState<PlaylistSongsScreen>
                     return PlaylistOptionListTile(
                       onTap: () async => _performAction(0),
                       isSelected: selectedDisplayItem == 0,
-                      type:
-                          widget.playlistKey == null
-                              ? PlaylistOptionType.savePlaylist
-                              : PlaylistOptionType.renamePlaylist,
+                      type: widget.playlistKey == null
+                          ? PlaylistOptionType.savePlaylist
+                          : PlaylistOptionType.renamePlaylist,
                     );
                   } else if (index == 1) {
                     return PlaylistOptionListTile(

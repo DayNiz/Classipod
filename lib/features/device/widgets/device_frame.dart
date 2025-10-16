@@ -30,16 +30,15 @@ class DeviceFrame extends ConsumerWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors:
-              (deviceColor == DeviceColor.black)
-                  ? [
-                    AppPalette.darkDeviceFrameGradientColor1,
-                    AppPalette.darkDeviceFrameGradientColor2,
-                  ]
-                  : [
-                    AppPalette.lightDeviceFrameGradientColor1,
-                    AppPalette.lightDeviceFrameGradientColor2,
-                  ],
+          colors: (deviceColor == DeviceColor.black)
+              ? [
+                  AppPalette.darkDeviceFrameGradientColor1,
+                  AppPalette.darkDeviceFrameGradientColor2,
+                ]
+              : [
+                  AppPalette.lightDeviceFrameGradientColor1,
+                  AppPalette.lightDeviceFrameGradientColor2,
+                ],
         ),
       ),
       child: Stack(

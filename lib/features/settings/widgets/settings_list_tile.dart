@@ -25,17 +25,16 @@ class SettingsListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            gradient:
-                isSelected
-                    ? const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppPalette.selectedTileGradientColor1,
-                        AppPalette.selectedTileGradientColor2,
-                      ],
-                    )
-                    : null,
+            gradient: isSelected
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppPalette.selectedTileGradientColor1,
+                      AppPalette.selectedTileGradientColor2,
+                    ],
+                  )
+                : null,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -54,10 +53,9 @@ class SettingsListTile extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:
-                          isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
+                      color: isSelected
+                          ? CupertinoColors.white
+                          : CupertinoColors.black,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -68,10 +66,9 @@ class SettingsListTile extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:
-                          isSelected
-                              ? CupertinoColors.white
-                              : AppPalette.hintTextColor,
+                      color: isSelected
+                          ? CupertinoColors.white
+                          : AppPalette.hintTextColor,
                     ),
                   ),
                 if (value == null && isSelected)

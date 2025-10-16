@@ -71,12 +71,11 @@ class _ExcludeDirectoriesScreenState
                   isSelected: false,
                   onTap: () {},
                 ),
-                itemBuilder:
-                    (context, index) => ExcludeDirectoryTile(
-                      excludeDirectoryModel: displayItems[index],
-                      isSelected: selectedDisplayItem == index,
-                      onTap: () async => _toggleExcludeDirectory(index),
-                    ),
+                itemBuilder: (context, index) => ExcludeDirectoryTile(
+                  excludeDirectoryModel: displayItems[index],
+                  isSelected: selectedDisplayItem == index,
+                  onTap: () async => _toggleExcludeDirectory(index),
+                ),
               ),
             ),
           ),

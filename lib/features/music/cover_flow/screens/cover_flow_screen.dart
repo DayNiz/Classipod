@@ -74,27 +74,29 @@ class _CoverFlowScreenState extends ConsumerState<CoverFlowScreen>
                     itemBuilder: (context, index) {
                       final double relativePosition = index - currentPage;
                       return GestureDetector(
-                        onTap:
-                            relativePosition == 0
-                                ? () => _chooseAlbum(index)
-                                : () async => pageController.animateToPage(
-                                  index,
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease,
-                                ),
+                        onTap: relativePosition == 0
+                            ? () => _chooseAlbum(index)
+                            : () async => pageController.animateToPage(
+                                index,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.ease,
+                              ),
                         child: Transform(
-                          transform:
-                              Matrix4.identity()
-                                ..setEntry(3, 2, 0.003)
-                                ..scale(
-                                  (1 - relativePosition.abs()).clamp(0.2, 0.6) +
-                                      0.4,
-                                )
-                                ..rotateY(relativePosition * 0.9),
-                          alignment:
-                              relativePosition >= 0
-                                  ? Alignment.centerLeft
-                                  : Alignment.centerRight,
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.003)
+                            ..scaleByDouble(
+                              (1 - relativePosition.abs()).clamp(0.2, 0.6) +
+                                  0.4,
+                              (1 - relativePosition.abs()).clamp(0.2, 0.6) +
+                                  0.4,
+                              (1 - relativePosition.abs()).clamp(0.2, 0.6) +
+                                  0.4,
+                              1,
+                            )
+                            ..rotateY(relativePosition * 0.9),
+                          alignment: relativePosition >= 0
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
                           child: AlbumReflectiveArt(
                             imageWidth: 230,
                             thumbnailPath: displayItems[index].albumArtPath,

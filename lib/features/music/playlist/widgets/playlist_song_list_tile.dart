@@ -32,40 +32,36 @@ class PlaylistSongListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            gradient:
-                isSelected
-                    ? const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppPalette.selectedTileGradientColor1,
-                        AppPalette.selectedTileGradientColor2,
-                      ],
-                    )
-                    : null,
-            border:
-                isSelected
-                    ? null
-                    : const Border(
-                      bottom: BorderSide(
-                        color: AppPalette.lightDeviceFrameGradientColor1,
-                      ),
+            gradient: isSelected
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppPalette.selectedTileGradientColor1,
+                      AppPalette.selectedTileGradientColor2,
+                    ],
+                  )
+                : null,
+            border: isSelected
+                ? null
+                : const Border(
+                    bottom: BorderSide(
+                      color: AppPalette.lightDeviceFrameGradientColor1,
                     ),
+                  ),
           ),
           child: Row(
             children: [
               Image(
-                image:
-                    (songMetadata.thumbnailPath != null)
-                        ? (songMetadata.isOnDevice)
-                            ? FileImage(File(songMetadata.thumbnailPath!))
-                            : NetworkImage(songMetadata.thumbnailPath!)
-                        : const AssetImage(Assets.defaultAlbumCoverImage),
-                errorBuilder:
-                    (_, _, _) => Image.asset(
-                      Assets.defaultAlbumCoverImage,
-                      fit: BoxFit.fitWidth,
-                    ),
+                image: (songMetadata.thumbnailPath != null)
+                    ? (songMetadata.isOnDevice)
+                          ? FileImage(File(songMetadata.thumbnailPath!))
+                          : NetworkImage(songMetadata.thumbnailPath!)
+                    : const AssetImage(Assets.defaultAlbumCoverImage),
+                errorBuilder: (_, _, _) => Image.asset(
+                  Assets.defaultAlbumCoverImage,
+                  fit: BoxFit.fitWidth,
+                ),
                 height: 54,
                 width: 54,
               ),
@@ -82,10 +78,9 @@ class PlaylistSongListTile extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color:
-                              isSelected
-                                  ? CupertinoColors.white
-                                  : CupertinoColors.black,
+                          color: isSelected
+                              ? CupertinoColors.white
+                              : CupertinoColors.black,
                         ),
                         maxLines: 1,
                       ),
@@ -96,10 +91,9 @@ class PlaylistSongListTile extends StatelessWidget {
                         songMetadata.getTrackArtistNames ??
                             context.localization.unknownArtist,
                         style: TextStyle(
-                          color:
-                              isSelected
-                                  ? CupertinoColors.white
-                                  : AppPalette.hintTextColor,
+                          color: isSelected
+                              ? CupertinoColors.white
+                              : AppPalette.hintTextColor,
                         ),
                         maxLines: 1,
                       ),
@@ -111,10 +105,9 @@ class PlaylistSongListTile extends StatelessWidget {
                 Icon(
                   CupertinoIcons.volume_up,
                   size: 18,
-                  color:
-                      isSelected
-                          ? CupertinoColors.white
-                          : CupertinoColors.black,
+                  color: isSelected
+                      ? CupertinoColors.white
+                      : CupertinoColors.black,
                 ),
               if (!isCurrentlyPlaying && isSelected)
                 const Icon(

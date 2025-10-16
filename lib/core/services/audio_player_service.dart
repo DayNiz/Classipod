@@ -16,11 +16,11 @@ final audioPlayerProvider = Provider<AudioPlayer>((_) {
 });
 
 final audioPlayerServiceProvider =
-    AutoDisposeAsyncNotifierProvider<AudioPlayerServiceNotifier, void>(
+    AsyncNotifierProvider<AudioPlayerServiceNotifier, void>(
       AudioPlayerServiceNotifier.new,
     );
 
-class AudioPlayerServiceNotifier extends AutoDisposeAsyncNotifier<void> {
+class AudioPlayerServiceNotifier extends AsyncNotifier<void> {
   AudioPlayerServiceNotifier() : super();
 
   @override
@@ -252,8 +252,10 @@ class AudioPlayerServiceNotifier extends AutoDisposeAsyncNotifier<void> {
   Future<void> seekForward() async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
-      final int currentDurationInSeconds =
-          ref.read(audioPlayerProvider).position.inSeconds;
+      final int currentDurationInSeconds = ref
+          .read(audioPlayerProvider)
+          .position
+          .inSeconds;
       final int maxDurationInSeconds =
           ref.read(audioPlayerProvider).duration?.inSeconds ?? 0;
       if (currentDurationInSeconds + 1 < maxDurationInSeconds) {

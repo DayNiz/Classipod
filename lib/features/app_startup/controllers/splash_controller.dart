@@ -15,11 +15,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 final splashControllerProvider =
-    AsyncNotifierProvider.autoDispose<SplashControllerNotifier, void>(
+    AsyncNotifierProvider<SplashControllerNotifier, void>(
       SplashControllerNotifier.new,
     );
 
-class SplashControllerNotifier extends AutoDisposeAsyncNotifier<void> {
+class SplashControllerNotifier extends AsyncNotifier<void> {
   @override
   Future<void> build() async {
     await requestStoragePermissions();
@@ -29,10 +29,11 @@ class SplashControllerNotifier extends AutoDisposeAsyncNotifier<void> {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
-        final PermissionStatus audioPermission =
-            await Permission.audio.request();
-        final PermissionStatus genericStoragePermission =
-            await Permission.storage.request();
+        final PermissionStatus audioPermission = await Permission.audio
+            .request();
+        final PermissionStatus genericStoragePermission = await Permission
+            .storage
+            .request();
         if (audioPermission.isDenied && genericStoragePermission.isDenied) {
           throw const AudioPermissionDeniedException();
         }

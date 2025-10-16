@@ -33,10 +33,9 @@ class DeviceScreen extends ConsumerWidget {
           color: CupertinoColors.white,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color:
-                deviceColor == DeviceColor.black
-                    ? AppPalette.darkDeviceScreenColor
-                    : AppPalette.lightDeviceScreenBorderColor,
+            color: deviceColor == DeviceColor.black
+                ? AppPalette.darkDeviceScreenColor
+                : AppPalette.lightDeviceScreenBorderColor,
             width: 5,
           ),
         ),
