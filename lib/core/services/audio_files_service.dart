@@ -14,10 +14,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-final audioFilesServiceProvider = AsyncNotifierProvider<
-  AudioFilesServiceNotifier,
-  UnmodifiableListView<MusicMetadata>
->(AudioFilesServiceNotifier.new);
+final audioFilesServiceProvider =
+    AsyncNotifierProvider<
+      AudioFilesServiceNotifier,
+      UnmodifiableListView<MusicMetadata>
+    >(AudioFilesServiceNotifier.new);
 
 class AudioFilesServiceNotifier
     extends AsyncNotifier<UnmodifiableListView<MusicMetadata>> {
@@ -43,11 +44,10 @@ class AudioFilesServiceNotifier
             final newDirectory = await FilePicker.platform.getDirectoryPath(
               dialogTitle: "Select Music Directory",
               lockParentWindow: true,
-              initialDirectory:
-                  ref
-                      .read(deviceDirectoryProvider)
-                      .requireValue
-                      .musicFolderPath,
+              initialDirectory: ref
+                  .read(deviceDirectoryProvider)
+                  .requireValue
+                  .musicFolderPath,
             );
             if (newDirectory != null) {
               final result = await compute(

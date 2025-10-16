@@ -50,12 +50,11 @@ class _LanguageSelectionScreenState
                   text: '',
                   isSelected: false,
                 ),
-                itemBuilder:
-                    (context, index) => DisplayListTile(
-                      text: displayItems[index].getNativeLanguageName(),
-                      isSelected: selectedDisplayItem == index,
-                      onTap: () async => _selectLanguage(index),
-                    ),
+                itemBuilder: (context, index) => DisplayListTile(
+                  text: displayItems[index].getNativeLanguageName(),
+                  isSelected: selectedDisplayItem == index,
+                  onTap: () async => _selectLanguage(index),
+                ),
               ),
             ),
           ),

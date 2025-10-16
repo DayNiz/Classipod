@@ -70,59 +70,53 @@ class TutorialViewWidget {
         _targetFocusWidget(
           identify: 'Device Controls',
           keyTarget: deviceControlsGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .deviceControlMenuTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .deviceControlMenuTutorialText,
           showAnimatedHand: true,
         ),
         _targetFocusWidget(
           identify: 'Center Button',
           keyTarget: centerButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .centerButtonMenuTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .centerButtonMenuTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Play / Pause Button',
           keyTarget: playPauseButtonGlobalKey,
           contentPadding: const EdgeInsets.only(bottom: 40),
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .playPauseMenuTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .playPauseMenuTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Next Button',
           keyTarget: nextButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .nextButtonMenuTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .nextButtonMenuTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Previous Button',
           keyTarget: previousButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .previousButtonMenuTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .previousButtonMenuTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Menu Button',
           contentPadding: const EdgeInsets.fromLTRB(20, 0, 20, 50),
           keyTarget: menuButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .menuButtonTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .menuButtonTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Device Screen',
@@ -130,11 +124,10 @@ class TutorialViewWidget {
           shapeLightFocus: ShapeLightFocus.RRect,
           contentAlign: ContentAlign.bottom,
           contentPadding: const EdgeInsets.only(top: 40),
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .deviceScreenMenuTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .deviceScreenMenuTutorialText,
         ),
       ],
       onFinish: onFinish,
@@ -153,39 +146,35 @@ class TutorialViewWidget {
         _targetFocusWidget(
           identify: 'Device Controls',
           keyTarget: deviceControlsGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .deviceControlNowPlayingTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .deviceControlNowPlayingTutorialText,
           showAnimatedHand: true,
         ),
         _targetFocusWidget(
           identify: 'Center Button',
           keyTarget: centerButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .centerButtonNowPlayingTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .centerButtonNowPlayingTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Next Button',
           keyTarget: nextButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .nextButtonNowPlayingTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .nextButtonNowPlayingTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Previous Button',
           keyTarget: previousButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .previousButtonNowPlayingTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .previousButtonNowPlayingTutorialText,
         ),
       ],
       onFinish: onFinish,
@@ -204,48 +193,43 @@ class TutorialViewWidget {
         _targetFocusWidget(
           identify: 'Device Controls',
           keyTarget: deviceControlsGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .clickWheelInputTextBarTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .clickWheelInputTextBarTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Center Button',
           keyTarget: centerButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .centerButtonInputTextBarScreenTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .centerButtonInputTextBarScreenTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Next Button',
           keyTarget: nextButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .nextButtonInputTextBarTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .nextButtonInputTextBarTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Previous Button',
           keyTarget: previousButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .previousButtonInputTextBarTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .previousButtonInputTextBarTutorialText,
         ),
         _targetFocusWidget(
           identify: 'Menu Button',
           contentPadding: const EdgeInsets.fromLTRB(20, 0, 20, 50),
           keyTarget: menuButtonGlobalKey,
-          tutorialText:
-              deviceFrameGlobalKey
-                  .currentContext!
-                  .localization
-                  .menuButtonInputTextBarTutorialText,
+          tutorialText: deviceFrameGlobalKey
+              .currentContext!
+              .localization
+              .menuButtonInputTextBarTutorialText,
         ),
       ],
       onFinish: onFinish,

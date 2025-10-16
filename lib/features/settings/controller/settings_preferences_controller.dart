@@ -25,10 +25,11 @@ import 'package:just_audio/just_audio.dart';
 import 'package:universal_html/html.dart';
 import 'package:volume_controller/volume_controller.dart';
 
-final settingsPreferencesControllerProvider = NotifierProvider<
-  SettingsPreferencesControllerNotifier,
-  SettingsPreferencesModel
->(SettingsPreferencesControllerNotifier.new);
+final settingsPreferencesControllerProvider =
+    NotifierProvider<
+      SettingsPreferencesControllerNotifier,
+      SettingsPreferencesModel
+    >(SettingsPreferencesControllerNotifier.new);
 
 class SettingsPreferencesControllerNotifier
     extends Notifier<SettingsPreferencesModel> {
@@ -50,8 +51,8 @@ class SettingsPreferencesControllerNotifier
       clickWheelSensitivity: ClickWheelSensitivity.values.byName(
         settingsPreferencesRepository.getClickWheelSensitivity(),
       ),
-      isTouchScreenEnabled:
-          settingsPreferencesRepository.getTouchScreenEnabled(),
+      isTouchScreenEnabled: settingsPreferencesRepository
+          .getTouchScreenEnabled(),
       repeatMode: RepeatMode.values.byName(
         settingsPreferencesRepository.getRepeatMode(),
       ),

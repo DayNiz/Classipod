@@ -22,10 +22,9 @@ class PlaylistModel extends HiveObject {
 
   PlaylistModel removeSongFromPlaylist(MusicMetadata song) {
     return copyWith(
-      songs:
-          songs
-              .where((e) => e.originalSongIndex != song.originalSongIndex)
-              .toList(),
+      songs: songs
+          .where((e) => e.originalSongIndex != song.originalSongIndex)
+          .toList(),
     );
   }
 

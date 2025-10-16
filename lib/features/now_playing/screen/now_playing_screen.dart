@@ -335,36 +335,33 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
                     ),
                   );
                 },
-                child:
-                    _bottomBarPage == _NowPlayingBottomBarPage.volumeBar
-                        ? const VolumeBar()
-                        : PageView(
-                          controller: _bottomBarPageController,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: [
-                            const NowPlayingBottomBar(),
-                            const NowPlayingBottomBar(showScrubber: true),
-                            ShuffleSegmentedControl(
-                              isShuffleEnabled: _isShuffleEnabled,
-                              onValueChanged: (value) {
-                                setState(() {
-                                  _isShuffleEnabled =
-                                      value ?? _isShuffleEnabled;
-                                });
-                              },
-                            ),
-                            RatingBar(
-                              currentRating:
-                                  nowPlayingDetails.currentMetadata?.rating ??
-                                  0,
-                              onRatingClicked: (val) async {
-                                await ref
-                                    .read(nowPlayingDetailsProvider.notifier)
-                                    .setCurrentMetadataRating(val ?? 0);
-                              },
-                            ),
-                          ],
-                        ),
+                child: _bottomBarPage == _NowPlayingBottomBarPage.volumeBar
+                    ? const VolumeBar()
+                    : PageView(
+                        controller: _bottomBarPageController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const NowPlayingBottomBar(),
+                          const NowPlayingBottomBar(showScrubber: true),
+                          ShuffleSegmentedControl(
+                            isShuffleEnabled: _isShuffleEnabled,
+                            onValueChanged: (value) {
+                              setState(() {
+                                _isShuffleEnabled = value ?? _isShuffleEnabled;
+                              });
+                            },
+                          ),
+                          RatingBar(
+                            currentRating:
+                                nowPlayingDetails.currentMetadata?.rating ?? 0,
+                            onRatingClicked: (val) async {
+                              await ref
+                                  .read(nowPlayingDetailsProvider.notifier)
+                                  .setCurrentMetadataRating(val ?? 0);
+                            },
+                          ),
+                        ],
+                      ),
               ),
             ),
           ),

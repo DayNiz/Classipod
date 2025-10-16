@@ -13,20 +13,18 @@ class BatteryIndicator extends ConsumerWidget {
     final batteryDetails = ref.watch(batteryDetailsControllerProvider);
     return batteryDetails.when(
       data: (data) => BatteryIndicatorWidget(batteryDetails: data),
-      error:
-          (_, _) => const BatteryIndicatorWidget(
-            batteryDetails: BatteryModel(
-              level: 100,
-              batteryState: BatteryState.unknown,
-            ),
-          ),
-      loading:
-          () => const BatteryIndicatorWidget(
-            batteryDetails: BatteryModel(
-              level: 100,
-              batteryState: BatteryState.full,
-            ),
-          ),
+      error: (_, _) => const BatteryIndicatorWidget(
+        batteryDetails: BatteryModel(
+          level: 100,
+          batteryState: BatteryState.unknown,
+        ),
+      ),
+      loading: () => const BatteryIndicatorWidget(
+        batteryDetails: BatteryModel(
+          level: 100,
+          batteryState: BatteryState.full,
+        ),
+      ),
     );
   }
 }
@@ -105,22 +103,21 @@ class BatteryIndicatorWidget extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors:
-                (batteryDetails.level <= 20)
-                    ? [
-                      AppPalette.lowBatteryBarGradientColor1,
-                      AppPalette.lowBatteryBarGradientColor2,
-                    ]
-                    : [
-                      AppPalette.batteryBarGradientColor1,
-                      AppPalette.batteryBarGradientColor2,
-                      AppPalette.batteryBarGradientColor3,
-                      AppPalette.batteryBarGradientColor4,
-                      AppPalette.batteryBarGradientColor5,
-                      AppPalette.batteryBarGradientColor6,
-                      AppPalette.batteryBarGradientColor7,
-                      AppPalette.batteryBarGradientColor6,
-                    ],
+            colors: (batteryDetails.level <= 20)
+                ? [
+                    AppPalette.lowBatteryBarGradientColor1,
+                    AppPalette.lowBatteryBarGradientColor2,
+                  ]
+                : [
+                    AppPalette.batteryBarGradientColor1,
+                    AppPalette.batteryBarGradientColor2,
+                    AppPalette.batteryBarGradientColor3,
+                    AppPalette.batteryBarGradientColor4,
+                    AppPalette.batteryBarGradientColor5,
+                    AppPalette.batteryBarGradientColor6,
+                    AppPalette.batteryBarGradientColor7,
+                    AppPalette.batteryBarGradientColor6,
+                  ],
           ),
         ),
       ),
@@ -136,14 +133,13 @@ class BatteryIndicatorWidget extends StatelessWidget {
             duration: Duration(milliseconds: duration.inMilliseconds ~/ 5),
             switchInCurve: curve,
             switchOutCurve: curve,
-            child:
-                batteryDetails.batteryState == BatteryState.charging
-                    ? Icon(
-                      CupertinoIcons.bolt_fill,
-                      color: AppPalette.batteryBarIconColor,
-                      size: constraints.maxHeight - 2,
-                    )
-                    : null,
+            child: batteryDetails.batteryState == BatteryState.charging
+                ? Icon(
+                    CupertinoIcons.bolt_fill,
+                    color: AppPalette.batteryBarIconColor,
+                    size: constraints.maxHeight - 2,
+                  )
+                : null,
           );
         },
       ),

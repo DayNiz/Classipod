@@ -146,8 +146,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen>
                         searchResult: displayItems[index - 1],
                         isSelected: selectedDisplayItem == index,
                         onTap: () async => _onSearchResultAction(index),
-                        onLongPress:
-                            () => _navigateToSearchMoreOptionsModal(index),
+                        onLongPress: () =>
+                            _navigateToSearchMoreOptionsModal(index),
                       );
                     },
                   ),

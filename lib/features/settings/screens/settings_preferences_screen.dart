@@ -337,13 +337,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen>
                   isSelected: false,
                   onTap: () {},
                 ),
-                itemBuilder:
-                    (context, index) => SettingsListTile(
-                      text: displayItems[index].title(context),
-                      value: _getValue(settingsState, displayItems[index]),
-                      isSelected: selectedDisplayItem == index,
-                      onTap: () async => _settingAction(displayItems[index]),
-                    ),
+                itemBuilder: (context, index) => SettingsListTile(
+                  text: displayItems[index].title(context),
+                  value: _getValue(settingsState, displayItems[index]),
+                  isSelected: selectedDisplayItem == index,
+                  onTap: () async => _settingAction(displayItems[index]),
+                ),
               ),
             ),
           ),

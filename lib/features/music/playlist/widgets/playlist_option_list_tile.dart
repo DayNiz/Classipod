@@ -54,17 +54,16 @@ class PlaylistOptionListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            gradient:
-                isSelected
-                    ? const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppPalette.selectedTileGradientColor1,
-                        AppPalette.selectedTileGradientColor2,
-                      ],
-                    )
-                    : null,
+            gradient: isSelected
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppPalette.selectedTileGradientColor1,
+                      AppPalette.selectedTileGradientColor2,
+                    ],
+                  )
+                : null,
           ),
           child: Row(
             children: [
@@ -83,10 +82,9 @@ class PlaylistOptionListTile extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color:
-                        isSelected
-                            ? CupertinoColors.white
-                            : CupertinoColors.black,
+                    color: isSelected
+                        ? CupertinoColors.white
+                        : CupertinoColors.black,
                   ),
                   maxLines: 1,
                 ),

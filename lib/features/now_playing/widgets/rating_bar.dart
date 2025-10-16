@@ -21,26 +21,25 @@ class RatingBar extends StatelessWidget {
           padding: const EdgeInsets.only(right: 8),
           child: GestureDetector(
             onTap: () => onRatingClicked(index + 1),
-            child:
-                (currentRating > index)
-                    ? const Icon(
-                      CupertinoIcons.star_fill,
-                      size: 24,
-                      color: AppPalette.selectedTileGradientColor2,
-                    )
-                    : const SizedBox(
-                      height: 24,
-                      width: 24,
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: DecoratedBox(
-                          decoration: ShapeDecoration(
-                            color: CupertinoColors.black,
-                            shape: CircleBorder(),
-                          ),
+            child: (currentRating > index)
+                ? const Icon(
+                    CupertinoIcons.star_fill,
+                    size: 24,
+                    color: AppPalette.selectedTileGradientColor2,
+                  )
+                : const SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: DecoratedBox(
+                        decoration: ShapeDecoration(
+                          color: CupertinoColors.black,
+                          shape: CircleBorder(),
                         ),
                       ),
                     ),
+                  ),
           ),
         ),
       ),

@@ -66,12 +66,11 @@ class _PlaylistRenameScreenState extends ConsumerState<PlaylistRenameScreen>
                       type: PlaylistOptionType.renameCancel,
                       onTap: () {},
                     ),
-                    itemBuilder:
-                        (context, index) => PlaylistOptionListTile(
-                          isSelected: selectedDisplayItem == index,
-                          onTap: () async => _onPlaylistRenameAction(index),
-                          type: displayItems[index],
-                        ),
+                    itemBuilder: (context, index) => PlaylistOptionListTile(
+                      isSelected: selectedDisplayItem == index,
+                      onTap: () async => _onPlaylistRenameAction(index),
+                      type: displayItems[index],
+                    ),
                   ),
                 ),
               ),

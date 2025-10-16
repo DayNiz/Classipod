@@ -55,12 +55,11 @@ class _PlaylistsScreenState extends ConsumerState<PlaylistsScreen>
                   isSelected: false,
                   onTap: () {},
                 ),
-                itemBuilder:
-                    (context, index) => PlaylistListTile(
-                      playlistModel: displayItems[index],
-                      isSelected: selectedDisplayItem == index,
-                      onTap: () async => _navigateToPlaylistSongsScreen(index),
-                    ),
+                itemBuilder: (context, index) => PlaylistListTile(
+                  playlistModel: displayItems[index],
+                  isSelected: selectedDisplayItem == index,
+                  onTap: () async => _navigateToPlaylistSongsScreen(index),
+                ),
               ),
             ),
           ),

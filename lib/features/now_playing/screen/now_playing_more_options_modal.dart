@@ -52,8 +52,9 @@ class _NowPlayingMoreOptionsModalState
 
   Future<void> _navigateToScreen(_NowPlayingMoreOptions optionItem) async {
     setState(() => selectedDisplayItem = displayItems.indexOf(optionItem));
-    final currentSongMetadata =
-        ref.read(nowPlayingDetailsProvider).currentMetadata;
+    final currentSongMetadata = ref
+        .read(nowPlayingDetailsProvider)
+        .currentMetadata;
     switch (optionItem) {
       case _NowPlayingMoreOptions.addToOnTheGo:
         ref

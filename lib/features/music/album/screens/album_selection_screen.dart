@@ -110,8 +110,9 @@ class _AlbumsSelectionScreenState extends ConsumerState<AlbumsSelectionScreen>
                 ),
                 itemBuilder: (context, index) {
                   if (index == 0) {
-                    final allSongs =
-                        ref.read(filteredAudioFilesProvider).requireValue;
+                    final allSongs = ref
+                        .read(filteredAudioFilesProvider)
+                        .requireValue;
                     return AlbumListTile(
                       albumDetails: AlbumModel(
                         albumName: context.localization.allSongs,
@@ -131,8 +132,8 @@ class _AlbumsSelectionScreenState extends ConsumerState<AlbumsSelectionScreen>
                     albumDetails: displayItems[index - 1],
                     isSelected: selectedDisplayItem == index,
                     onTap: () async => _navigateToAlbumSelectionScreen(index),
-                    onLongPress:
-                        () async => _navigateToAlbumMoreOptionsScreen(index),
+                    onLongPress: () async =>
+                        _navigateToAlbumMoreOptionsScreen(index),
                   );
                 },
               ),

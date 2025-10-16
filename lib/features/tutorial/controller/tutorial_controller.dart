@@ -74,16 +74,14 @@ class TutorialControllerNotifier extends Notifier<TutorialModel> {
     if (!isBatteryOptimizationDisabled) {
       await Dialogs.showInfoDialog(
         context: deviceFrameGlobalKey.currentContext!,
-        title:
-            deviceFrameGlobalKey
-                .currentContext!
-                .localization
-                .disableBatteryOptimizationTitle,
-        content:
-            deviceFrameGlobalKey
-                .currentContext!
-                .localization
-                .disableBatteryOptimizationContent,
+        title: deviceFrameGlobalKey
+            .currentContext!
+            .localization
+            .disableBatteryOptimizationTitle,
+        content: deviceFrameGlobalKey
+            .currentContext!
+            .localization
+            .disableBatteryOptimizationContent,
       );
       await ref.read(batteryOptimizationProvider.notifier).openSettings();
     }

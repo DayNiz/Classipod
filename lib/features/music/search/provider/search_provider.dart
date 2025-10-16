@@ -29,8 +29,9 @@ final searchProvider = Provider.autoDispose
       final artistsNames = ref.read(artistNamesProvider);
       for (final artist in artistsNames) {
         if (artist.toLowerCase().contains(searchQuery.toLowerCase())) {
-          final numberOfSongs =
-              ref.read(artistAlbumDetailListProvider(artist)).length;
+          final numberOfSongs = ref
+              .read(artistAlbumDetailListProvider(artist))
+              .length;
           searchResults.add(
             SearchResultsModel(
               searchResultType: SearchResultType.artist,

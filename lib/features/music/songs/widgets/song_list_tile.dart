@@ -30,25 +30,23 @@ class SongListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            gradient:
-                isSelected
-                    ? const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppPalette.selectedTileGradientColor1,
-                        AppPalette.selectedTileGradientColor2,
-                      ],
-                    )
-                    : null,
-            border:
-                isSelected
-                    ? null
-                    : const Border(
-                      bottom: BorderSide(
-                        color: AppPalette.lightDeviceFrameGradientColor1,
-                      ),
+            gradient: isSelected
+                ? const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppPalette.selectedTileGradientColor1,
+                      AppPalette.selectedTileGradientColor2,
+                    ],
+                  )
+                : null,
+            border: isSelected
+                ? null
+                : const Border(
+                    bottom: BorderSide(
+                      color: AppPalette.lightDeviceFrameGradientColor1,
                     ),
+                  ),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -64,20 +62,18 @@ class SongListTile extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color:
-                              isSelected
-                                  ? CupertinoColors.white
-                                  : CupertinoColors.black,
+                          color: isSelected
+                              ? CupertinoColors.white
+                              : CupertinoColors.black,
                         ),
                         maxLines: 1,
                       ),
                       Text(
                         trackArtistNames ?? context.localization.unknownArtist,
                         style: TextStyle(
-                          color:
-                              isSelected
-                                  ? CupertinoColors.white
-                                  : AppPalette.hintTextColor,
+                          color: isSelected
+                              ? CupertinoColors.white
+                              : AppPalette.hintTextColor,
                         ),
                         maxLines: 1,
                       ),
@@ -88,10 +84,9 @@ class SongListTile extends StatelessWidget {
                   Icon(
                     CupertinoIcons.volume_up,
                     size: 18,
-                    color:
-                        isSelected
-                            ? CupertinoColors.white
-                            : CupertinoColors.black,
+                    color: isSelected
+                        ? CupertinoColors.white
+                        : CupertinoColors.black,
                   ),
               ],
             ),

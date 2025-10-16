@@ -113,8 +113,8 @@ class _ArtistAlbumsScreenState extends ConsumerState<ArtistAlbumsScreen>
                       showArtistName: false,
                       isAllSongsAlbum: true,
                       onTap: () async => _navigateToAlbumSelectionScreen(0),
-                      onLongPress:
-                          () async => _navigateToAlbumMoreOptionsScreen(0),
+                      onLongPress: () async =>
+                          _navigateToAlbumMoreOptionsScreen(0),
                     );
                   }
 
@@ -123,8 +123,8 @@ class _ArtistAlbumsScreenState extends ConsumerState<ArtistAlbumsScreen>
                     isSelected: selectedDisplayItem == index,
                     showArtistName: false,
                     onTap: () async => _navigateToAlbumSelectionScreen(index),
-                    onLongPress:
-                        () async => _navigateToAlbumMoreOptionsScreen(index),
+                    onLongPress: () async =>
+                        _navigateToAlbumMoreOptionsScreen(index),
                   );
                 },
               ),
