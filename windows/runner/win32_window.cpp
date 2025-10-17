@@ -1,9 +1,11 @@
 #include "win32_window.h"
 
+#include <cmath>
 #include <dwmapi.h>
 #include <flutter_windows.h>
 
 #include "resource.h"
+#include "utils.h"
 
 namespace {
 
@@ -179,14 +181,39 @@ Win32Window::MessageHandler(HWND hwnd,
                             WPARAM const wparam,
                             LPARAM const lparam) noexcept {
   switch (message) {
-    case WM_DESTROY:
-      window_handle_ = nullptr;
-      Destroy();
-      if (quit_on_close_) {
-        PostQuitMessage(0);
-      }
-      return 0;
+    case WM_DESTROY:{
+        WINDOWPLACEMENT placement;
+        placement.length = sizeof(WINDOWPLACEMENT);
+        if (GetWindowPlacement(hwnd, &placement)) {
+            RECT rect = placement.rcNormalPosition;
+            int width = rect.right - rect.left;
+            int height = rect.bottom - rect.top;
 
+            HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+            UINT dpi = 96;
+            if (monitor != nullptr) {
+                dpi = FlutterDesktopGetDpiForMonitor(monitor);
+            }
+            double scale_factor = dpi / 96.0;
+            if (scale_factor <= 0.0) {
+                scale_factor = 1.0;
+            }
+
+            int logical_width =
+                    static_cast<int>(std::round(width / scale_factor));
+            int logical_height =
+                    static_cast<int>(std::round(height / scale_factor));
+
+            SaveWindowSize(
+                    StoredWindowSize{logical_width, logical_height, false});
+        }
+        window_handle_ = nullptr;
+        Destroy();
+        if (quit_on_close_) {
+            PostQuitMessage(0);
+        }
+        return 0;
+    }
     case WM_DPICHANGED: {
       auto newRectSize = reinterpret_cast<RECT*>(lparam);
       LONG newWidth = newRectSize->right - newRectSize->left;
