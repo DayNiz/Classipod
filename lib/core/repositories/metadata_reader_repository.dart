@@ -38,11 +38,13 @@ class MetadataReaderRepository {
     required String? artistName,
     required String filePath,
   }) {
+    final String? normalizedAlbumName = normalizeMetadataString(albumName);
+    final String? normalizedArtistName = normalizeMetadataString(artistName);
     String albumArtFileName;
-    if (albumName == null || artistName == null) {
+    if (normalizedAlbumName == null || normalizedArtistName == null) {
       albumArtFileName = filePath;
     } else {
-      albumArtFileName = '${albumName}by$artistName';
+      albumArtFileName = '${normalizedAlbumName}by$normalizedArtistName';
     }
     albumArtFileName = albumArtFileName
         .replaceAll(RegExp(r'[\\/:*?"<>|]'), '_')

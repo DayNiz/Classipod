@@ -8,7 +8,6 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 
-@visibleForTesting
 String? normalizeMetadataString(String? value) {
   if (value == null || value.isEmpty) {
     return value;
