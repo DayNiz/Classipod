@@ -98,7 +98,7 @@ class DeviceFrame extends ConsumerWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
-                  maxHeight: 800,
+                  maxHeight: 960,
                   maxWidth: 450,
                 ),
                 child: Column(
