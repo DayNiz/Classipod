@@ -8,6 +8,46 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 
+String? normalizeMetadataString(String? value) {
+  if (value == null || value.isEmpty) {
+    return value;
+  }
+
+  final codeUnits = value.codeUnits;
+
+  if (codeUnits.isEmpty || codeUnits.first != 0xFFFE) {
+    return value;
+  }
+
+  final StringBuffer buffer = StringBuffer();
+
+  for (final int unit in codeUnits) {
+    final int swappedUnit = ((unit & 0xFF) << 8) | (unit >> 8);
+
+    if (swappedUnit == 0xFEFF) {
+      continue;
+    }
+
+    buffer.writeCharCode(swappedUnit);
+  }
+
+  final String normalizedValue = buffer.toString();
+
+  return normalizedValue.isEmpty ? value : normalizedValue;
+}
+
+List<String> _splitArtistNames(String artist) {
+  if (artist.contains(',')) {
+    return artist.split(',').map((name) => name.trim()).toList();
+  } else if (artist.contains('/')) {
+    return artist.split('/').map((name) => name.trim()).toList();
+  } else if (artist.contains(';')) {
+    return artist.split(';').map((name) => name.trim()).toList();
+  }
+
+  return [artist];
+}
+
 class MusicMetadata extends HiveObject {
   /// Name of the track.
   final String? trackName;
@@ -85,22 +125,15 @@ class MusicMetadata extends HiveObject {
     String? thumbnailPath,
     int originalSongIndex,
   ) {
-    final artist = audioMetadata.artist ?? "Unknown Artist";
-    late final List<String> trackArtistNames;
-    if (artist.contains(',')) {
-      trackArtistNames = artist.split(',').toList();
-    } else if (artist.contains('/')) {
-      trackArtistNames = artist.split('/').toList();
-    } else if (artist.contains(';')) {
-      trackArtistNames = artist.split(';').toList();
-    } else {
-      trackArtistNames = [artist];
-    }
+    final artist =
+        normalizeMetadataString(audioMetadata.artist) ?? "Unknown Artist";
+    final List<String> trackArtistNames = _splitArtistNames(artist);
 
     return MusicMetadata(
-      trackName: audioMetadata.title ?? "Unknown Song",
+      trackName: normalizeMetadataString(audioMetadata.title) ?? "Unknown Song",
       trackArtistNames: trackArtistNames,
-      albumName: audioMetadata.album ?? "Unknown Album",
+      albumName:
+          normalizeMetadataString(audioMetadata.album) ?? "Unknown Album",
       albumArtistName: trackArtistNames[0],
       trackNumber: audioMetadata.trackNumber,
       albumLength: audioMetadata.trackTotal,
@@ -119,10 +152,14 @@ class MusicMetadata extends HiveObject {
   }
 
   factory MusicMetadata.fromMap(Map<String, dynamic> map) => MusicMetadata(
-    trackName: map['metadata']['trackName'],
-    trackArtistNames: map['metadata']['trackArtistNames']?.split('/'),
-    albumName: map['metadata']['albumName'],
-    albumArtistName: map['metadata']['albumArtistName'],
+    trackName: normalizeMetadataString(map['metadata']['trackName']),
+    trackArtistNames: normalizeMetadataString(
+      map['metadata']['trackArtistNames'],
+    )?.split('/'),
+    albumName: normalizeMetadataString(map['metadata']['albumName']),
+    albumArtistName: normalizeMetadataString(
+      map['metadata']['albumArtistName'],
+    ),
     trackNumber: parseInteger(map['metadata']['trackNumber']),
     albumLength: parseInteger(map['metadata']['albumLength']),
     year: parseInteger(map['metadata']['year']),
