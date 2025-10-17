@@ -1,3 +1,4 @@
+#include <cmath>
 #include <flutter/dart_project.h>
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
@@ -27,6 +28,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(400, 800);
+  if (auto stored_size = LoadStoredWindowSize()) {
+    int restored_width = stored_size->width;
+    int restored_height = stored_size->height;
+    if (stored_size->is_physical) {
+        const POINT target_point = {static_cast<LONG>(origin.x),
+                                    static_cast<LONG>(origin.y)};
+        HMONITOR monitor = MonitorFromPoint(target_point, MONITOR_DEFAULTTONEAREST);
+        UINT dpi = 96;
+        if (monitor != nullptr) {
+            dpi = FlutterDesktopGetDpiForMonitor(monitor);
+        }
+        double scale_factor = dpi / 96.0;
+        if (scale_factor <= 0.0) {
+            scale_factor = 1.0;
+        }
+        restored_width = static_cast<int>(std::round(restored_width / scale_factor));
+        restored_height = static_cast<int>(std::round(restored_height / scale_factor));
+        SaveWindowSize(StoredWindowSize{restored_width, restored_height, false});
+    }
+    size = Win32Window::Size(restored_width, restored_height);
+  }
   if (!window.Create(L"ClassiPod", origin, size)) {
     return EXIT_FAILURE;
   }
