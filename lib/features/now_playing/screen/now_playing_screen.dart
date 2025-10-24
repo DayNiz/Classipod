@@ -8,6 +8,7 @@ import 'package:classipod/core/widgets/empty_state_widget.dart';
 import 'package:classipod/features/device/models/device_action.dart';
 import 'package:classipod/features/device/services/device_buttons_service_provider.dart';
 import 'package:classipod/features/now_playing/provider/now_playing_details_provider.dart';
+import 'package:classipod/features/now_playing/widgets/lyrics_view.dart';
 import 'package:classipod/features/now_playing/widgets/now_playing_bottom_bar.dart';
 import 'package:classipod/features/now_playing/widgets/now_playing_widget.dart';
 import 'package:classipod/features/now_playing/widgets/rating_bar.dart';
@@ -27,6 +28,7 @@ enum _NowPlayingBottomBarPage {
   volumeBar,
   shuffleBar,
   ratingBar,
+  lyrics,
 }
 
 class NowPlayingScreen extends ConsumerStatefulWidget {
@@ -38,6 +40,7 @@ class NowPlayingScreen extends ConsumerStatefulWidget {
 
 class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
   final PageController _bottomBarPageController = PageController();
+  final ScrollController _lyricsScrollController = ScrollController();
   late Timer _longPressTimer;
   Timer _lastVolumeChangeTimer = Timer(Duration.zero, () {});
   bool _isShuffleEnabled = false;
@@ -46,6 +49,12 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
   String get routeName => Routes.nowPlaying.name;
 
   Future<void> onSelectPressed() async {
+    final String? lyrics = ref
+        .read(nowPlayingDetailsProvider)
+        .currentMetadata
+        ?.lyrics;
+    final bool hasLyrics = lyrics != null && lyrics.trim().isNotEmpty;
+
     if (_bottomBarPage == _NowPlayingBottomBarPage.seekBar) {
       await _bottomBarPageController.animateToPage(
         1,
@@ -77,6 +86,26 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
         _bottomBarPage = _NowPlayingBottomBarPage.ratingBar;
       });
     } else if (_bottomBarPage == _NowPlayingBottomBarPage.ratingBar) {
+      if (hasLyrics) {
+        await _bottomBarPageController.animateToPage(
+          4,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+        setState(() {
+          _bottomBarPage = _NowPlayingBottomBarPage.lyrics;
+        });
+      } else {
+        await _bottomBarPageController.animateToPage(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+        setState(() {
+          _bottomBarPage = _NowPlayingBottomBarPage.seekBar;
+        });
+      }
+    } else if (_bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
       await _bottomBarPageController.animateToPage(
         0,
         duration: const Duration(milliseconds: 300),
@@ -122,6 +151,9 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
           .read(nowPlayingDetailsProvider.notifier)
           .increaseCurrentMetadataRating();
       return;
+    } else if (_bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
+      // TODO: Scroll lyrics down
+      return;
     }
     setState(() {
       _bottomBarPage = _NowPlayingBottomBarPage.volumeBar;
@@ -145,6 +177,9 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
       await ref
           .read(nowPlayingDetailsProvider.notifier)
           .decreaseCurrentMetadataRating();
+      return;
+    } else if (_bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
+      // TODO: Scroll lyrics up
       return;
     }
     setState(() {
@@ -203,6 +238,7 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
   void dispose() {
     _lastVolumeChangeTimer.cancel();
     _bottomBarPageController.dispose();
+    _lyricsScrollController.dispose();
     super.dispose();
   }
 
@@ -249,6 +285,22 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
   @override
   Widget build(BuildContext context) {
     final nowPlayingDetails = ref.watch(nowPlayingDetailsProvider);
+    final String? lyrics = nowPlayingDetails.currentMetadata?.lyrics;
+    final bool hasLyrics = lyrics != null && lyrics.trim().isNotEmpty;
+
+    if (!hasLyrics && _bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) {
+          return;
+        }
+        if (_bottomBarPageController.hasClients) {
+          _bottomBarPageController.jumpToPage(0);
+        }
+        setState(() {
+          _bottomBarPage = _NowPlayingBottomBarPage.seekBar;
+        });
+      });
+    }
 
     ref.listen(deviceButtonsServiceProvider, deviceControlHandler);
 
@@ -305,7 +357,21 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
               onLongPress: onSelectLongPress,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: NowPlayingWidget(nowPlayingDetails: nowPlayingDetails),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child:
+                      (_bottomBarPage == _NowPlayingBottomBarPage.lyrics &&
+                          hasLyrics)
+                      ? LyricsView(
+                          key: const ValueKey('lyrics-view'),
+                          lyrics: lyrics,
+                          scrollController: _lyricsScrollController,
+                        )
+                      : NowPlayingWidget(
+                          key: const ValueKey('now-playing-view'),
+                          nowPlayingDetails: nowPlayingDetails,
+                        ),
+                ),
               ),
             ),
           ),
@@ -360,6 +426,7 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
                                   .setCurrentMetadataRating(val ?? 0);
                             },
                           ),
+                          if (hasLyrics) const SizedBox(height: 10),
                         ],
                       ),
               ),
