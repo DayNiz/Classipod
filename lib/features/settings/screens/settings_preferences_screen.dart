@@ -22,6 +22,7 @@ enum _SettingsDisplayItems {
   shuffle,
   repeat,
   language,
+  appTheme,
   deviceColor,
   clickWheelSize,
   clickWheelSensitivity,
@@ -47,6 +48,8 @@ enum _SettingsDisplayItems {
         return context.localization.repeatModeSettingTitle;
       case language:
         return context.localization.languageScreenTitle;
+      case appTheme:
+        return context.localization.themeSettingTitle;
       case isTouchScreenEnabled:
         return context.localization.touchScreenSettingTitle;
       case deviceColor:
@@ -114,6 +117,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen>
         await ref
             .read(settingsPreferencesControllerProvider.notifier)
             .toggleRepeatMode();
+        break;
+      case _SettingsDisplayItems.appTheme:
+        await ref
+            .read(settingsPreferencesControllerProvider.notifier)
+            .toggleAppTheme();
         break;
       case _SettingsDisplayItems.deviceColor:
         context.goNamed(Routes.deviceColor.name);
@@ -218,6 +226,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen>
         return settingsState.clickWheelSize.title(context);
       case _SettingsDisplayItems.clickWheelSensitivity:
         return settingsState.clickWheelSensitivity.title(context);
+      case _SettingsDisplayItems.appTheme:
+        return settingsState.appTheme.title(context);
       case _SettingsDisplayItems.repeat:
         return settingsState.repeatMode.title(context);
       case _SettingsDisplayItems.volumeMode:
@@ -246,6 +256,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen>
       case _SettingsDisplayItems.deviceColor:
         ref.read(splitScreenControllerProvider.notifier).changeSplitScreenType =
             SplitScreenType.deviceColor;
+        break;
+      case _SettingsDisplayItems.appTheme:
+        ref.read(splitScreenControllerProvider.notifier).changeSplitScreenType =
+            SplitScreenType.appTheme;
         break;
       case _SettingsDisplayItems.clickWheelSize:
         ref.read(splitScreenControllerProvider.notifier).changeSplitScreenType =

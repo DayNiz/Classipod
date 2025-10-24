@@ -24,6 +24,17 @@ class SearchListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final borderColor = isDarkTheme
+        ? AppPalette.darkListTileBorderColor
+        : AppPalette.lightListTileBorderColor;
+    final Border? tileBorder = isSelected
+        ? null
+        : Border(
+            bottom: BorderSide(color: borderColor),
+          );
+
     late final String title;
     late final String description;
     late final String? imageFilePath;
@@ -67,13 +78,7 @@ class SearchListTile extends StatelessWidget {
                     ],
                   )
                 : null,
-            border: isSelected
-                ? null
-                : const Border(
-                    bottom: BorderSide(
-                      color: AppPalette.lightDeviceFrameGradientColor1,
-                    ),
-                  ),
+            border: tileBorder,
           ),
           child: Row(
             children: [
@@ -124,32 +129,34 @@ class SearchListTile extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: isSelected
-                            ? CupertinoColors.white
-                            : CupertinoColors.black,
-                      ),
+                      style: CupertinoTheme.of(context).textTheme.textStyle
+                          .copyWith(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: isSelected
+                                ? context.appInverseTextColor
+                                : context.appPrimaryTextColor,
+                          ),
                       maxLines: 1,
                     ),
                     const SizedBox(height: 2),
                     Text(
                       description,
-                      style: TextStyle(
-                        color: isSelected
-                            ? CupertinoColors.white
-                            : AppPalette.hintTextColor,
-                      ),
+                      style: CupertinoTheme.of(context).textTheme.textStyle
+                          .copyWith(
+                            color: isSelected
+                                ? context.appInverseTextColor
+                                : context.appSecondaryTextColor,
+                          ),
                       maxLines: 1,
                     ),
                   ],
                 ),
               ),
               if (isSelected)
-                const Icon(
+                Icon(
                   CupertinoIcons.right_chevron,
-                  color: CupertinoColors.white,
+                  color: context.appInverseTextColor,
                 ),
             ],
           ),

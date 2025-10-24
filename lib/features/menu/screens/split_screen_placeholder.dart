@@ -104,6 +104,12 @@ class _SplitScreenPlaceholderState extends ConsumerState<SplitScreenPlaceholder>
         splitScreenWidget = const NowPlayingPreviewWidget();
       } else if (splitScreenType == SplitScreenType.language) {
         splitScreenWidget = const LanguagePreviewWidget();
+      } else if (splitScreenType == SplitScreenType.appTheme) {
+        splitScreenWidget = IconPreviewWidget(
+          titleText: context.localization.themeSettingTitle,
+          icon: CupertinoIcons.moon_stars,
+          contentText: currentSettings.appTheme.title(context),
+        );
       } else if (splitScreenType == SplitScreenType.deviceColor) {
         splitScreenWidget = IconPreviewWidget(
           titleText: context.localization.deviceColorSettingTitle,

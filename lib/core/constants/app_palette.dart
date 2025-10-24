@@ -159,6 +159,8 @@ class AppPalette {
   static const Color selectedTileGradientColor1 = Color(0xFF70A9DB);
   static const Color selectedTileGradientColor2 = Color(0xFF5382C9);
   static const Color selectedTileBottomBorderColor = Color(0xFF2F4A81);
+  static const Color lightListTileBorderColor = lightDeviceFrameGradientColor1;
+  static const Color darkListTileBorderColor = Color(0xFF3A3A3C);
   static const Color nowProgressBarGradientColor1 = Color(0xFF8694d7);
   static const Color nowProgressBarGradientColor2 = Color(0xFF96aaf7);
   static const Color nowProgressBarGradientColor3 = Color(0xFF849fed);
@@ -168,13 +170,20 @@ class AppPalette {
   static const Color nowProgressBarGradientColor7 = Color(0xFF84B7F5);
   static const Color nowProgressBarGradientColor8 = Color(0xFF87a9d0);
   static const Color nowProgressBarShadowColor = Color(0xFFE9F3FE);
+  static const Color darkNowProgressBarShadowColor = Color(0x66000000);
   static const Color statusBarGradientColor1 = Color(0xFFFCFCFC);
   static const Color statusBarGradientColor2 = Color(0xFF8A8C8B);
   static const Color statusBarBorderColor = Color(0xFF71797B);
+  static const Color darkStatusBarGradientColor1 = Color(0xFFB5B7BC);
+  static const Color darkStatusBarGradientColor2 = Color(0xFF5E6166);
+  static const Color darkStatusBarBorderColor = Color(0xFF3E4045);
   static const Color hintTextColor = Color(0xFF4B4B4B);
   static const Color inActiveSliderGradientColor1 = Color(0xFFFBFBFB);
   static const Color inActiveSliderGradientColor2 = Color(0xFFEFEFEF);
   static const Color sliderBorderColor = Color(0xFFE2E2E2);
+  static const Color darkSliderGradientColor1 = Color(0xFF2B2B2D);
+  static const Color darkSliderGradientColor2 = Color(0xFF3A3A3C);
+  static const Color darkSliderBorderColor = Color(0xFF4A4A4C);
   static const Color batteryBarOutlineColor = Color(0xFF69696A);
   static const Color batteryBarGradientColor1 = Color(0xFFAFCE92);
   static const Color batteryBarGradientColor2 = Color(0xFFE2F7CC);
@@ -192,4 +201,6 @@ class AppPalette {
   static const Color darkScreenBackgroundGradient2 = Color(0xFF4C5258);
   static const Color darkScreenLightIconColor = Color(0xFFD3D3D3);
   static const Color emptyScreenDarkIconColor = Color(0xFF9697BB);
+  static const Color darkReflectionOverlayColor1 = Color(0x73000000);
+  static const Color darkReflectionOverlayColor2 = Color(0xCC000000);
 }

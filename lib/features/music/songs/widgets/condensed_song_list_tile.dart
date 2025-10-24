@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class CondensedSongListTile extends StatelessWidget {
@@ -53,13 +54,14 @@ class CondensedSongListTile extends StatelessWidget {
                 Flexible(
                   child: Text(
                     songName,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: isSelected
-                          ? CupertinoColors.white
-                          : CupertinoColors.black,
-                    ),
+                    style: CupertinoTheme.of(context).textTheme.textStyle
+                        .copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: isSelected
+                              ? context.appInverseTextColor
+                              : context.appPrimaryTextColor,
+                        ),
                     maxLines: 1,
                   ),
                 ),
@@ -67,8 +69,8 @@ class CondensedSongListTile extends StatelessWidget {
                   Icon(
                     CupertinoIcons.volume_up,
                     color: isSelected
-                        ? CupertinoColors.white
-                        : CupertinoColors.black,
+                        ? context.appInverseTextColor
+                        : context.appPrimaryTextColor,
                   ),
               ],
             ),

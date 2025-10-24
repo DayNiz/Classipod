@@ -11,6 +11,9 @@ void main() {
     const SystemUiOverlayStyle(
       systemNavigationBarColor: AppPalette.transparentColor,
       statusBarColor: AppPalette.transparentColor,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
     ),
   );
 

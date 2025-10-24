@@ -36,11 +36,12 @@ class AboutScreen extends ConsumerWidget {
               children: [
                 Text(
                   context.localization.appTitle,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: CupertinoColors.black,
-                  ),
+                  style: CupertinoTheme.of(context).textTheme.textStyle
+                      .copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: context.appPrimaryTextColor,
+                      ),
                 ),
                 const SizedBox(height: 10),
                 AboutListTile(

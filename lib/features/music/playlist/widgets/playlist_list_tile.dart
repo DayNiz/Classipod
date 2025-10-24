@@ -17,6 +17,17 @@ class PlaylistListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final borderColor = isDarkTheme
+        ? AppPalette.darkListTileBorderColor
+        : AppPalette.lightListTileBorderColor;
+    final Border? tileBorder = isSelected
+        ? null
+        : Border(
+            bottom: BorderSide(color: borderColor),
+          );
+
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -34,13 +45,7 @@ class PlaylistListTile extends StatelessWidget {
                     ],
                   )
                 : null,
-            border: isSelected
-                ? null
-                : const Border(
-                    bottom: BorderSide(
-                      color: AppPalette.lightDeviceFrameGradientColor1,
-                    ),
-                  ),
+            border: tileBorder,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -53,32 +58,34 @@ class PlaylistListTile extends StatelessWidget {
                     children: [
                       Text(
                         playlistModel.name,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appPrimaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                       Text(
                         context.localization.nSongs(playlistModel.songs.length),
-                        style: TextStyle(
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : AppPalette.hintTextColor,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appSecondaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                     ],
                   ),
                 ),
                 if (isSelected)
-                  const Icon(
+                  Icon(
                     CupertinoIcons.chevron_right,
                     size: 18,
-                    color: CupertinoColors.white,
+                    color: context.appInverseTextColor,
                   ),
               ],
             ),

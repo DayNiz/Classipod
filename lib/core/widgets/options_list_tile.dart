@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class OptionsListTile extends StatelessWidget {
@@ -48,12 +49,12 @@ class OptionsListTile extends StatelessWidget {
             child: Center(
               child: Text(
                 text,
-                style: TextStyle(
+                style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: isSelected
-                      ? CupertinoColors.white
-                      : CupertinoColors.black,
+                      ? context.appInverseTextColor
+                      : context.appPrimaryTextColor,
                 ),
                 maxLines: 1,
               ),

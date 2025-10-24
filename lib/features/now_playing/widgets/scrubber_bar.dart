@@ -11,6 +11,21 @@ class ScrubberBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final gradientColors = isDarkTheme
+        ? const [
+            AppPalette.darkSliderGradientColor1,
+            AppPalette.darkSliderGradientColor2,
+          ]
+        : const [
+            AppPalette.inActiveSliderGradientColor1,
+            AppPalette.inActiveSliderGradientColor2,
+          ];
+    final borderColor = isDarkTheme
+        ? AppPalette.darkSliderBorderColor
+        : AppPalette.sliderBorderColor;
+
     return Expanded(
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -33,15 +48,12 @@ class ScrubberBar extends ConsumerWidget {
                     width: constraints.maxWidth,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [
-                            AppPalette.inActiveSliderGradientColor1,
-                            AppPalette.inActiveSliderGradientColor2,
-                          ],
+                          colors: gradientColors,
                         ),
-                        border: Border.all(color: AppPalette.sliderBorderColor),
+                        border: Border.all(color: borderColor),
                       ),
                     ),
                   ),

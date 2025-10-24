@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:classipod/core/constants/app_palette.dart';
 import 'package:classipod/core/constants/assets.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -59,6 +60,18 @@ class _AlbumReflectiveArtState extends State<AlbumReflectiveArt>
     } else {
       transform = Matrix4.identity();
     }
+
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final overlayTopColor = isDarkTheme
+        ? AppPalette.darkReflectionOverlayColor1
+        : const Color(0x66FFFFFF);
+    final overlayBottomColor = isDarkTheme
+        ? AppPalette.darkReflectionOverlayColor2
+        : const Color(0xFFFFFFFF);
+    final overlayBorderColor = isDarkTheme
+        ? CupertinoColors.black
+        : CupertinoColors.white;
 
     return Hero(
       tag: widget.heroTag,
@@ -163,17 +176,17 @@ class _AlbumReflectiveArtState extends State<AlbumReflectiveArt>
                         : double.infinity,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        border: const Border(
+                        border: Border(
                           left: BorderSide(
-                            color: CupertinoColors.white,
+                            color: overlayBorderColor,
                             width: 0,
                           ),
                           right: BorderSide(
-                            color: CupertinoColors.white,
+                            color: overlayBorderColor,
                             width: 0,
                           ),
                           bottom: BorderSide(
-                            color: CupertinoColors.white,
+                            color: overlayBorderColor,
                             width: 0,
                           ),
                         ),
@@ -181,8 +194,8 @@ class _AlbumReflectiveArtState extends State<AlbumReflectiveArt>
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            CupertinoColors.white.withValues(alpha: 0.4),
-                            CupertinoColors.white,
+                            overlayTopColor,
+                            overlayBottomColor,
                           ],
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/core/widgets/marquee_text.dart';
 import 'package:classipod/features/settings/models/exclude_directory_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,14 +58,15 @@ class ExcludeDirectoryTile extends StatelessWidget {
                     delayBefore: const Duration(seconds: 2),
                     pauseBetween: const Duration(seconds: 2),
                     pauseOnBounce: const Duration(seconds: 2),
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: isSelected
-                          ? CupertinoColors.white
-                          : CupertinoColors.black,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    style: CupertinoTheme.of(context).textTheme.textStyle
+                        .copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: isSelected
+                              ? context.appInverseTextColor
+                              : context.appPrimaryTextColor,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                   ),
                 ),
                 const SizedBox(width: 5),

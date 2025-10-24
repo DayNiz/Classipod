@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/constants.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/features/settings/controller/settings_preferences_controller.dart';
 import 'package:classipod/features/settings/models/device_color.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,7 +31,7 @@ class DeviceScreen extends ConsumerWidget {
         height: Constants.screenHeight + 10,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: CupertinoColors.white,
+          color: context.appDeviceScreenBackgroundColor,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: deviceColorStyle.screenBorderColor,

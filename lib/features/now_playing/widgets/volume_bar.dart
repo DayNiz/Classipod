@@ -53,6 +53,24 @@ class _VolumeBarState extends ConsumerState<VolumeBar> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final inactiveGradientColors = isDarkTheme
+        ? const [
+            AppPalette.darkSliderGradientColor1,
+            AppPalette.darkSliderGradientColor2,
+          ]
+        : const [
+            AppPalette.inActiveSliderGradientColor1,
+            AppPalette.inActiveSliderGradientColor2,
+          ];
+    final borderColor = isDarkTheme
+        ? AppPalette.darkSliderBorderColor
+        : AppPalette.sliderBorderColor;
+    final progressShadowColor = isDarkTheme
+        ? AppPalette.darkNowProgressBarShadowColor
+        : AppPalette.nowProgressBarShadowColor;
+
     return RepaintBoundary(
       child: Row(
         children: [
@@ -70,17 +88,12 @@ class _VolumeBarState extends ConsumerState<VolumeBar> {
                         width: constraints.maxWidth,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
+                            gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [
-                                AppPalette.inActiveSliderGradientColor1,
-                                AppPalette.inActiveSliderGradientColor2,
-                              ],
+                              colors: inactiveGradientColors,
                             ),
-                            border: Border.all(
-                              color: AppPalette.sliderBorderColor,
-                            ),
+                            border: Border.all(color: borderColor),
                           ),
                         ),
                       ),
@@ -90,8 +103,8 @@ class _VolumeBarState extends ConsumerState<VolumeBar> {
                       width: _volumeLevel * constraints.maxWidth,
                       margin: const EdgeInsets.symmetric(horizontal: 8),
                       duration: const Duration(milliseconds: 10),
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
@@ -108,7 +121,7 @@ class _VolumeBarState extends ConsumerState<VolumeBar> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: AppPalette.nowProgressBarShadowColor,
+                            color: progressShadowColor,
                             spreadRadius: 1,
                             blurRadius: 2,
                             offset: Offset(0, 8),

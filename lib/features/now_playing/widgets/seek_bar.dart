@@ -11,6 +11,24 @@ class SeekBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final inactiveGradientColors = isDarkTheme
+        ? const [
+            AppPalette.darkSliderGradientColor1,
+            AppPalette.darkSliderGradientColor2,
+          ]
+        : const [
+            AppPalette.inActiveSliderGradientColor1,
+            AppPalette.inActiveSliderGradientColor2,
+          ];
+    final borderColor = isDarkTheme
+        ? AppPalette.darkSliderBorderColor
+        : AppPalette.sliderBorderColor;
+    final progressShadowColor = isDarkTheme
+        ? AppPalette.darkNowProgressBarShadowColor
+        : AppPalette.nowProgressBarShadowColor;
+
     return Expanded(
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -33,15 +51,12 @@ class SeekBar extends ConsumerWidget {
                     width: constraints.maxWidth,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [
-                            AppPalette.inActiveSliderGradientColor1,
-                            AppPalette.inActiveSliderGradientColor2,
-                          ],
+                          colors: inactiveGradientColors,
                         ),
-                        border: Border.all(color: AppPalette.sliderBorderColor),
+                        border: Border.all(color: borderColor),
                       ),
                     ),
                   ),
@@ -53,8 +68,8 @@ class SeekBar extends ConsumerWidget {
                   width: (value / max) * constraints.maxWidth,
                   margin: const EdgeInsets.symmetric(horizontal: 8),
                   duration: const Duration(milliseconds: 10),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
@@ -71,7 +86,7 @@ class SeekBar extends ConsumerWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: AppPalette.nowProgressBarShadowColor,
+                        color: progressShadowColor,
                         spreadRadius: 1,
                         blurRadius: 2,
                         offset: Offset(0, 8),
