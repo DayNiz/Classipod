@@ -43,6 +43,7 @@ class AppPalette {
   static const Color nowProgressBarGradientColor7 = Color(0xFF84B7F5);
   static const Color nowProgressBarGradientColor8 = Color(0xFF87a9d0);
   static const Color nowProgressBarShadowColor = Color(0xFFE9F3FE);
+  static const Color darkNowProgressBarShadowColor = Color(0x66000000);
   static const Color statusBarGradientColor1 = Color(0xFFFCFCFC);
   static const Color statusBarGradientColor2 = Color(0xFF8A8C8B);
   static const Color statusBarBorderColor = Color(0xFF71797B);
@@ -53,6 +54,9 @@ class AppPalette {
   static const Color inActiveSliderGradientColor1 = Color(0xFFFBFBFB);
   static const Color inActiveSliderGradientColor2 = Color(0xFFEFEFEF);
   static const Color sliderBorderColor = Color(0xFFE2E2E2);
+  static const Color darkSliderGradientColor1 = Color(0xFF2B2B2D);
+  static const Color darkSliderGradientColor2 = Color(0xFF3A3A3C);
+  static const Color darkSliderBorderColor = Color(0xFF4A4A4C);
   static const Color batteryBarOutlineColor = Color(0xFF69696A);
   static const Color batteryBarGradientColor1 = Color(0xFFAFCE92);
   static const Color batteryBarGradientColor2 = Color(0xFFE2F7CC);
