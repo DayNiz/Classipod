@@ -13,6 +13,7 @@ enum _NowPlayingMoreOptions {
   addToOnTheGo,
   browseAlbum,
   browseArtist,
+  editSong,
   cancel;
 
   String title(BuildContext context) {
@@ -23,6 +24,8 @@ enum _NowPlayingMoreOptions {
         return context.localization.browseAlbum;
       case browseArtist:
         return context.localization.browseArtist;
+      case editSong:
+        return context.localization.editSongOption;
       case cancel:
         return context.localization.cancelText;
     }
@@ -81,6 +84,16 @@ class _NowPlayingMoreOptionsModalState
                 currentSongMetadata?.getMainArtistName ?? "Unknown Artist",
           },
         );
+        break;
+      case _NowPlayingMoreOptions.editSong:
+        if (currentSongMetadata != null) {
+          await context.pushNamed(
+            Routes.songEdit.name,
+            extra: currentSongMetadata,
+          );
+        } else {
+          context.pop();
+        }
         break;
       case _NowPlayingMoreOptions.cancel:
         context.pop();

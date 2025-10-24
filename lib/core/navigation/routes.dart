@@ -25,6 +25,7 @@ import 'package:classipod/features/music/playlist/screens/playlist_songs_screen.
 import 'package:classipod/features/music/playlist/screens/playlists_screen.dart';
 import 'package:classipod/features/music/search/screens/search_more_options_modal.dart';
 import 'package:classipod/features/music/search/screens/search_screen.dart';
+import 'package:classipod/features/music/songs/screens/song_edit_screen.dart';
 import 'package:classipod/features/music/songs/screens/songs_more_options_modal.dart';
 import 'package:classipod/features/music/songs/screens/songs_screen.dart';
 import 'package:classipod/features/now_playing/screen/now_playing_more_options_modal.dart';
@@ -49,6 +50,7 @@ enum Routes {
   excludeDirectories,
   nowPlaying,
   nowPlayingMoreOptions,
+  songEdit,
   musicMenu,
   coverFlow,
   coverFlowSelection,
@@ -96,6 +98,8 @@ enum Routes {
         return context.localization.nowPlayingScreenTitle;
       case nowPlayingMoreOptions:
         return context.localization.nowPlayingScreenTitle;
+      case songEdit:
+        return context.localization.editSongScreenTitle;
       case musicMenu:
         return context.localization.musicMenuScreenTitle;
       case coverFlow:
@@ -283,6 +287,16 @@ final routerProvider = Provider(
                           title: Routes.nowPlayingMoreOptions.title(context),
                           builder: (context) =>
                               const NowPlayingMoreOptionsModal(),
+                        ),
+                      ),
+                      GoRoute(
+                        path: Routes.songEdit.name,
+                        name: Routes.songEdit.name,
+                        parentNavigatorKey: rootNavigatorKey,
+                        pageBuilder: (context, state) => CupertinoPage(
+                          child: SongEditScreen(
+                            songMetadata: state.extra as MusicMetadata,
+                          ),
                         ),
                       ),
                     ],
