@@ -116,9 +116,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen>
             .toggleRepeatMode();
         break;
       case _SettingsDisplayItems.deviceColor:
-        await ref
-            .read(settingsPreferencesControllerProvider.notifier)
-            .toggleDeviceColor();
+        context.goNamed(Routes.deviceColor.name);
         break;
       case _SettingsDisplayItems.clickWheelSize:
         await ref

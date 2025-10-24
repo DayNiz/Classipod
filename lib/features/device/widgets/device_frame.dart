@@ -1,4 +1,3 @@
-import 'package:classipod/core/constants/app_palette.dart';
 import 'package:classipod/core/constants/assets.dart';
 import 'package:classipod/core/constants/keys.dart';
 import 'package:classipod/features/device/widgets/device_controls.dart';
@@ -16,29 +15,22 @@ class DeviceFrame extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.sizeOf(context);
-    final deviceColor = ref.watch(
+    final DeviceColor deviceColor = ref.watch(
       settingsPreferencesControllerProvider.select((e) => e.deviceColor),
     );
+    final deviceColorStyle = deviceColor.style;
 
     return DecoratedBox(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: const AssetImage(Assets.noiseImage),
           fit: BoxFit.cover,
-          opacity: deviceColor == DeviceColor.black ? 0.3 : 1,
+          opacity: deviceColorStyle.noiseOpacity,
         ),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: (deviceColor == DeviceColor.black)
-              ? [
-                  AppPalette.darkDeviceFrameGradientColor1,
-                  AppPalette.darkDeviceFrameGradientColor2,
-                ]
-              : [
-                  AppPalette.lightDeviceFrameGradientColor1,
-                  AppPalette.lightDeviceFrameGradientColor2,
-                ],
+          colors: deviceColorStyle.frameGradientColors,
         ),
       ),
       child: Stack(
