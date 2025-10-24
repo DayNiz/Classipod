@@ -23,9 +23,8 @@ void main() {
     overrides: [
       deviceDirectoryProvider.overrideWith(
         (_) => DeviceDirectory(
-          cacheDirectory: Directory("${Directory.current.path}/test/cache"),
           documentsDirectory: Directory(
-            "${Directory.current.path}/test/test_files/",
+            "${Directory.current.path}/test/test_files",
           ),
         ),
       ),

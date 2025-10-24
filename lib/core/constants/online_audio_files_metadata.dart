@@ -17,7 +17,7 @@ final List<MusicMetadata> onlineDemoAudioFilesMetaData = [
     filePath:
         "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/mp3/Faded.mp3",
     thumbnailPath:
-        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/cache/FadedbyAlanWalker.jpg",
+        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/ClassiPod/FadedbyAlanWalker.jpg",
   ),
   MusicMetadata(
     trackName: "Spectre",
@@ -37,7 +37,7 @@ final List<MusicMetadata> onlineDemoAudioFilesMetaData = [
     filePath:
         "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/opus/Spectre.opus",
     thumbnailPath:
-        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/cache/SpectrebyAlanWalker.jpg",
+        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/ClassiPod/SpectrebyAlanWalker.jpg",
   ),
   MusicMetadata(
     trackName: "Firefly",
@@ -56,7 +56,7 @@ final List<MusicMetadata> onlineDemoAudioFilesMetaData = [
     filePath:
         "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/ogg/Firefly.ogg",
     thumbnailPath:
-        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/cache/FireflybyJimYosef.jpg",
+        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/ClassiPod/FireflybyJimYosef.jpg",
   ),
   MusicMetadata(
     trackName: "On & On",
@@ -75,6 +75,6 @@ final List<MusicMetadata> onlineDemoAudioFilesMetaData = [
     filePath:
         "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/m4a/On&On.m4a",
     thumbnailPath:
-        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/cache/On&OnbyCartoon&DanielLevi.jpg",
+        "https://raw.githubusercontent.com/adeeteya/Classipod/master/test/test_files/ClassiPod/On&OnbyCartoon&DanielLevi.jpg",
   ),
 ];

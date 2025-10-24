@@ -9,15 +9,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final metadataReaderRepositoryProvider =
     Provider.autoDispose<MetadataReaderRepository>((ref) {
+      final documentsDirectory =
+          ref.read(deviceDirectoryProvider).requireValue.documentsDirectory;
+      final thumbnailsDirectoryPath =
+          '${documentsDirectory.path}/ClassiPod/thumbnails';
+      Directory(thumbnailsDirectoryPath).createSync(recursive: true);
       return MetadataReaderRepository(
-        ref.read(deviceDirectoryProvider).requireValue.cacheDirectory.path,
+        thumbnailsDirectoryPath,
       );
     });
 
 class MetadataReaderRepository {
-  final String cacheParentDirectory;
+  final String thumbnailsDirectoryPath;
 
-  MetadataReaderRepository(this.cacheParentDirectory);
+  MetadataReaderRepository(this.thumbnailsDirectoryPath);
 
   bool isSupportedAudioFormat(String path) {
     if (path.endsWith('.mp3') ||
@@ -50,7 +55,7 @@ class MetadataReaderRepository {
         .replaceAll(RegExp(r'[\\/:*?"<>|]'), '_')
         .replaceAll('/', '-')
         .replaceAll(' ', '');
-    return '$cacheParentDirectory/$albumArtFileName.jpg';
+    return '$thumbnailsDirectoryPath/$albumArtFileName.jpg';
   }
 
   UnmodifiableListView<MusicMetadata> extractMetadataFromDirectory(
