@@ -45,6 +45,7 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
   Timer _lastVolumeChangeTimer = Timer(Duration.zero, () {});
   bool _isShuffleEnabled = false;
   _NowPlayingBottomBarPage _bottomBarPage = _NowPlayingBottomBarPage.seekBar;
+  int? _lastLyricsSongIndex;
 
   String get routeName => Routes.nowPlaying.name;
 
@@ -121,6 +122,28 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
     unawaited(context.pushNamed(Routes.nowPlayingMoreOptions.name));
   }
 
+  Future<void> scrollLyrics(double offsetChange) async {
+    if (!_lyricsScrollController.hasClients) {
+      return;
+    }
+
+    final ScrollPosition position = _lyricsScrollController.position;
+    final double targetOffset = (position.pixels + offsetChange).clamp(
+      position.minScrollExtent,
+      position.maxScrollExtent,
+    );
+
+    if (targetOffset == position.pixels) {
+      return;
+    }
+
+    await _lyricsScrollController.animateTo(
+      targetOffset,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOut,
+    );
+  }
+
   void startVolumeTimer() {
     if (_lastVolumeChangeTimer.isActive) {
       _lastVolumeChangeTimer.cancel();
@@ -152,7 +175,7 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
           .increaseCurrentMetadataRating();
       return;
     } else if (_bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
-      // TODO: Scroll lyrics down
+      await scrollLyrics(60);
       return;
     }
     setState(() {
@@ -179,7 +202,7 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
           .decreaseCurrentMetadataRating();
       return;
     } else if (_bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
-      // TODO: Scroll lyrics up
+      await scrollLyrics(-60);
       return;
     }
     setState(() {
@@ -287,6 +310,18 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
     final nowPlayingDetails = ref.watch(nowPlayingDetailsProvider);
     final String? lyrics = nowPlayingDetails.currentMetadata?.lyrics;
     final bool hasLyrics = lyrics != null && lyrics.trim().isNotEmpty;
+    final int? currentLyricsSongIndex =
+        nowPlayingDetails.currentMetadata?.originalSongIndex;
+
+    if (_lastLyricsSongIndex != currentLyricsSongIndex) {
+      _lastLyricsSongIndex = currentLyricsSongIndex;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!_lyricsScrollController.hasClients) {
+          return;
+        }
+        _lyricsScrollController.jumpTo(0);
+      });
+    }
 
     if (!hasLyrics && _bottomBarPage == _NowPlayingBottomBarPage.lyrics) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -363,7 +398,9 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
                       (_bottomBarPage == _NowPlayingBottomBarPage.lyrics &&
                           hasLyrics)
                       ? LyricsView(
-                          key: const ValueKey('lyrics-view'),
+                          key: ValueKey(
+                            'lyrics-view-${nowPlayingDetails.currentMetadata?.originalSongIndex ?? 0}',
+                          ),
                           lyrics: lyrics,
                           scrollController: _lyricsScrollController,
                         )

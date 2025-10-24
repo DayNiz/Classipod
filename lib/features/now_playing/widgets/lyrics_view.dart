@@ -17,6 +17,8 @@ class LyricsView extends StatelessWidget {
       child: CupertinoScrollbar(
         controller: scrollController,
         child: SingleChildScrollView(
+          controller: scrollController,
+          padding: const EdgeInsets.only(right: 10),
           child: Text(
             lyrics,
             style: const TextStyle(
