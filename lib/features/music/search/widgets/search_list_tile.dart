@@ -31,9 +31,7 @@ class SearchListTile extends StatelessWidget {
         : AppPalette.lightListTileBorderColor;
     final Border? tileBorder = isSelected
         ? null
-        : Border(
-            bottom: BorderSide(color: borderColor),
-          );
+        : Border(bottom: BorderSide(color: borderColor));
 
     late final String title;
     late final String description;

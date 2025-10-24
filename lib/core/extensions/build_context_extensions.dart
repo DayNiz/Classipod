@@ -23,14 +23,12 @@ extension BuildContextColorExtensions on BuildContext {
 
   Color get appSurfaceColor => AppColorScheme.surface.resolveFrom(this);
 
-  Color get appPrimaryTextColor =>
-      AppColorScheme.primaryText.resolveFrom(this);
+  Color get appPrimaryTextColor => AppColorScheme.primaryText.resolveFrom(this);
 
   Color get appSecondaryTextColor =>
       AppColorScheme.secondaryText.resolveFrom(this);
 
-  Color get appInverseTextColor =>
-      AppColorScheme.inverseText.resolveFrom(this);
+  Color get appInverseTextColor => AppColorScheme.inverseText.resolveFrom(this);
 
   Color get appOutlineColor => AppColorScheme.outline.resolveFrom(this);
 

@@ -36,9 +36,7 @@ class StatusBar extends StatelessWidget {
             end: Alignment.bottomCenter,
             colors: gradientColors,
           ),
-          border: Border(
-            bottom: BorderSide(color: borderColor),
-          ),
+          border: Border(bottom: BorderSide(color: borderColor)),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),

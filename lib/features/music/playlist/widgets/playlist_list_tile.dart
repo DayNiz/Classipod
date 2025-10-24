@@ -24,9 +24,7 @@ class PlaylistListTile extends StatelessWidget {
         : AppPalette.lightListTileBorderColor;
     final Border? tileBorder = isSelected
         ? null
-        : Border(
-            bottom: BorderSide(color: borderColor),
-          );
+        : Border(bottom: BorderSide(color: borderColor));
 
     return GestureDetector(
       onTap: onTap,

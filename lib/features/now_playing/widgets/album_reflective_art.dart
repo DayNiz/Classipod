@@ -177,10 +177,7 @@ class _AlbumReflectiveArtState extends State<AlbumReflectiveArt>
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         border: Border(
-                          left: BorderSide(
-                            color: overlayBorderColor,
-                            width: 0,
-                          ),
+                          left: BorderSide(color: overlayBorderColor, width: 0),
                           right: BorderSide(
                             color: overlayBorderColor,
                             width: 0,
@@ -193,10 +190,7 @@ class _AlbumReflectiveArtState extends State<AlbumReflectiveArt>
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [
-                            overlayTopColor,
-                            overlayBottomColor,
-                          ],
+                          colors: [overlayTopColor, overlayBottomColor],
                         ),
                       ),
                     ),

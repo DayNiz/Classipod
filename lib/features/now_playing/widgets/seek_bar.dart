@@ -89,7 +89,7 @@ class SeekBar extends ConsumerWidget {
                         color: progressShadowColor,
                         spreadRadius: 1,
                         blurRadius: 2,
-                        offset: Offset(0, 8),
+                        offset: const Offset(0, 8),
                       ),
                     ],
                   ),
