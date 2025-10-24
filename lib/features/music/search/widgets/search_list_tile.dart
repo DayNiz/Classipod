@@ -24,6 +24,17 @@ class SearchListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final borderColor = isDarkTheme
+        ? AppPalette.darkListTileBorderColor
+        : AppPalette.lightListTileBorderColor;
+    final Border? tileBorder = isSelected
+        ? null
+        : Border(
+            bottom: BorderSide(color: borderColor),
+          );
+
     late final String title;
     late final String description;
     late final String? imageFilePath;
@@ -67,13 +78,7 @@ class SearchListTile extends StatelessWidget {
                     ],
                   )
                 : null,
-            border: isSelected
-                ? null
-                : const Border(
-                    bottom: BorderSide(
-                      color: AppPalette.lightDeviceFrameGradientColor1,
-                    ),
-                  ),
+            border: tileBorder,
           ),
           child: Row(
             children: [

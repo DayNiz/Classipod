@@ -17,6 +17,17 @@ class PlaylistListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final borderColor = isDarkTheme
+        ? AppPalette.darkListTileBorderColor
+        : AppPalette.lightListTileBorderColor;
+    final Border? tileBorder = isSelected
+        ? null
+        : Border(
+            bottom: BorderSide(color: borderColor),
+          );
+
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -34,13 +45,7 @@ class PlaylistListTile extends StatelessWidget {
                     ],
                   )
                 : null,
-            border: isSelected
-                ? null
-                : const Border(
-                    bottom: BorderSide(
-                      color: AppPalette.lightDeviceFrameGradientColor1,
-                    ),
-                  ),
+            border: tileBorder,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),

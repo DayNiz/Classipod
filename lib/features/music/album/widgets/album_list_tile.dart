@@ -26,6 +26,17 @@ class AlbumListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final borderColor = isDarkTheme
+        ? AppPalette.darkListTileBorderColor
+        : AppPalette.lightListTileBorderColor;
+    final Border? tileBorder = isSelected
+        ? null
+        : Border(
+            bottom: BorderSide(color: borderColor),
+          );
+
     return GestureDetector(
       onTap: onTap,
       onLongPress: onLongPress,
@@ -34,13 +45,7 @@ class AlbumListTile extends StatelessWidget {
         width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            border: isSelected
-                ? null
-                : const Border(
-                    bottom: BorderSide(
-                      color: AppPalette.lightDeviceFrameGradientColor1,
-                    ),
-                  ),
+            border: tileBorder,
             gradient: isSelected
                 ? const LinearGradient(
                     begin: Alignment.topCenter,

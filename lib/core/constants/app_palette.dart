@@ -34,6 +34,8 @@ class AppPalette {
   static const Color selectedTileGradientColor1 = Color(0xFF70A9DB);
   static const Color selectedTileGradientColor2 = Color(0xFF5382C9);
   static const Color selectedTileBottomBorderColor = Color(0xFF2F4A81);
+  static const Color lightListTileBorderColor = lightDeviceFrameGradientColor1;
+  static const Color darkListTileBorderColor = Color(0xFF3A3A3C);
   static const Color nowProgressBarGradientColor1 = Color(0xFF8694d7);
   static const Color nowProgressBarGradientColor2 = Color(0xFF96aaf7);
   static const Color nowProgressBarGradientColor3 = Color(0xFF849fed);
