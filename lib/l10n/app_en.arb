@@ -415,6 +415,38 @@
   "@previousButtonNowPlayingTutorialText": {
     "description": "The tutorial text for the previous button when user is in now playing screen for the first time"
   },
+  "editSongOption": "Edit Song",
+  "@editSongOption": {
+    "description": "Label for the option to edit the current song metadata"
+  },
+  "editSongScreenTitle": "Edit Song",
+  "@editSongScreenTitle": {
+    "description": "Title for the song edit screen"
+  },
+  "editSongNameLabel": "Song Name",
+  "@editSongNameLabel": {
+    "description": "Label for editing the song title"
+  },
+  "editSongArtistLabel": "Artist Names",
+  "@editSongArtistLabel": {
+    "description": "Label for editing artist names"
+  },
+  "editSongAlbumLabel": "Album Name",
+  "@editSongAlbumLabel": {
+    "description": "Label for editing the album name"
+  },
+  "editSongGenreLabel": "Genre",
+  "@editSongGenreLabel": {
+    "description": "Label for editing the main genre"
+  },
+  "editSongLyricsLabel": "Lyrics",
+  "@editSongLyricsLabel": {
+    "description": "Label for editing the lyrics text"
+  },
+  "saveChangesButton": "Save Changes",
+  "@saveChangesButton": {
+    "description": "Label for the button that saves edited song metadata"
+  },
   "clickWheelInputTextBarTutorialText": "Move your thumb lightly around the Click Wheel to highlight a alphabet",
   "@clickWheelInputTextBarTutorialText": {
     "description": "The tutorial text for the click wheel when user is in input text bar screen for the first time"

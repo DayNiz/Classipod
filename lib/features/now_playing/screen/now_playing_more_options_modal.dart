@@ -4,6 +4,7 @@ import 'package:classipod/core/widgets/options_list_tile.dart';
 import 'package:classipod/features/custom_screen_elements/custom_screen.dart';
 import 'package:classipod/features/music/album/providers/album_details_provider.dart';
 import 'package:classipod/features/music/playlist/providers/playlists_provider.dart';
+import 'package:classipod/features/music/songs/screens/song_edit_screen.dart';
 import 'package:classipod/features/now_playing/provider/now_playing_details_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +14,7 @@ enum _NowPlayingMoreOptions {
   addToOnTheGo,
   browseAlbum,
   browseArtist,
+  editSong,
   cancel;
 
   String title(BuildContext context) {
@@ -23,6 +25,8 @@ enum _NowPlayingMoreOptions {
         return context.localization.browseAlbum;
       case browseArtist:
         return context.localization.browseArtist;
+      case editSong:
+        return context.localization.editSongOption;
       case cancel:
         return context.localization.cancelText;
     }
@@ -81,6 +85,20 @@ class _NowPlayingMoreOptionsModalState
                 currentSongMetadata?.getMainArtistName ?? "Unknown Artist",
           },
         );
+        break;
+      case _NowPlayingMoreOptions.editSong:
+        if (currentSongMetadata == null) {
+          context.pop();
+          return;
+        }
+        await showCupertinoDialog(
+          context: context,
+          builder: (dialogContext) =>
+              SongEditScreen(songMetadata: currentSongMetadata),
+        );
+        if (mounted) {
+          context.pop();
+        }
         break;
       case _NowPlayingMoreOptions.cancel:
         context.pop();

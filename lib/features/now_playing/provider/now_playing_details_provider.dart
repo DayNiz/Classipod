@@ -73,24 +73,7 @@ class NowPlayingDetailsNotifier extends Notifier<NowPlayingModel> {
   Future<void> setCurrentMetadataRating(int val) async {
     if (0 <= val && val <= 5 && state.currentMetadata != null) {
       final newMetadata = state.currentMetadata!.copyWith(rating: val);
-      state = state.copyWith(
-        currentMetadata: newMetadata,
-        metadataList: [
-          for (final metadata in state.metadataList)
-            if (metadata.originalSongIndex ==
-                state.currentMetadata!.originalSongIndex)
-              newMetadata
-            else
-              metadata,
-        ],
-      );
-      final Box<MusicMetadata> metadataBox = Hive.box<MusicMetadata>(
-        Constants.metadataBoxName,
-      );
-      await metadataBox.putAt(newMetadata.originalSongIndex, newMetadata);
-      ref.invalidate(filteredAudioFilesProvider);
-      ref.invalidate(albumDetailsProvider);
-      ref.invalidate(playlistsProvider);
+      await updateMetadata(newMetadata);
     }
   }
 
@@ -106,5 +89,30 @@ class NowPlayingDetailsNotifier extends Notifier<NowPlayingModel> {
     if (currentRating != null && currentRating > 0) {
       await setCurrentMetadataRating(currentRating - 1);
     }
+  }
+
+  Future<void> updateMetadata(MusicMetadata updatedMetadata) async {
+    state = state.copyWith(
+      currentMetadata:
+          state.currentMetadata?.originalSongIndex ==
+              updatedMetadata.originalSongIndex
+          ? updatedMetadata
+          : state.currentMetadata,
+      metadataList: [
+        for (final metadata in state.metadataList)
+          if (metadata.originalSongIndex == updatedMetadata.originalSongIndex)
+            updatedMetadata
+          else
+            metadata,
+      ],
+    );
+
+    final Box<MusicMetadata> metadataBox = Hive.box<MusicMetadata>(
+      Constants.metadataBoxName,
+    );
+    await metadataBox.putAt(updatedMetadata.originalSongIndex, updatedMetadata);
+    ref.invalidate(filteredAudioFilesProvider);
+    ref.invalidate(albumDetailsProvider);
+    ref.invalidate(playlistsProvider);
   }
 }
