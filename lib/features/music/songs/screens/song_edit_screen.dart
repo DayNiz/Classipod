@@ -4,7 +4,6 @@ import 'package:classipod/features/now_playing/provider/now_playing_details_prov
 import 'package:classipod/features/status_bar/widgets/status_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class SongEditScreen extends ConsumerStatefulWidget {
   final MusicMetadata songMetadata;
@@ -90,7 +89,7 @@ class _SongEditScreenState extends ConsumerState<SongEditScreen> {
         .updateMetadata(updatedMetadata);
 
     if (mounted) {
-      context.pop(updatedMetadata);
+      Navigator.of(context).pop(updatedMetadata);
     }
   }
 
@@ -107,53 +106,57 @@ class _SongEditScreenState extends ConsumerState<SongEditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: Column(
-        children: [
-          StatusBar(title: context.localization.editSongScreenTitle),
-          Expanded(
-            child: CupertinoScrollbar(
-              child: ListView(
-                padding: const EdgeInsets.all(16),
-                children: [
-                  _SongEditField(
-                    label: context.localization.editSongNameLabel,
-                    controller: _titleController,
-                  ),
-                  _SongEditField(
-                    label: context.localization.editSongArtistLabel,
-                    controller: _artistController,
-                  ),
-                  _SongEditField(
-                    label: context.localization.editSongAlbumLabel,
-                    controller: _albumController,
-                  ),
-                  _SongEditField(
-                    label: context.localization.editSongGenreLabel,
-                    controller: _genreController,
-                  ),
-                  _SongEditField(
-                    label: context.localization.editSongLyricsLabel,
-                    controller: _lyricsController,
-                    maxLines: 5,
-                  ),
-                  const SizedBox(height: 24),
-                  CupertinoButton.filled(
-                    onPressed: _isSaving ? null : _saveChanges,
-                    child: _isSaving
-                        ? const CupertinoActivityIndicator()
-                        : Text(context.localization.saveChangesButton),
-                  ),
-                  const SizedBox(height: 12),
-                  CupertinoButton(
-                    onPressed: _isSaving ? null : () => context.pop(),
-                    child: Text(context.localization.cancelText),
-                  ),
-                ],
+    return SafeArea(
+      child: CupertinoPageScaffold(
+        child: Column(
+          children: [
+            StatusBar(title: context.localization.editSongScreenTitle),
+            Expanded(
+              child: CupertinoScrollbar(
+                child: ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: [
+                    _SongEditField(
+                      label: context.localization.editSongNameLabel,
+                      controller: _titleController,
+                    ),
+                    _SongEditField(
+                      label: context.localization.editSongArtistLabel,
+                      controller: _artistController,
+                    ),
+                    _SongEditField(
+                      label: context.localization.editSongAlbumLabel,
+                      controller: _albumController,
+                    ),
+                    _SongEditField(
+                      label: context.localization.editSongGenreLabel,
+                      controller: _genreController,
+                    ),
+                    _SongEditField(
+                      label: context.localization.editSongLyricsLabel,
+                      controller: _lyricsController,
+                      maxLines: 5,
+                    ),
+                    const SizedBox(height: 24),
+                    CupertinoButton.filled(
+                      onPressed: _isSaving ? null : _saveChanges,
+                      child: _isSaving
+                          ? const CupertinoActivityIndicator()
+                          : Text(context.localization.saveChangesButton),
+                    ),
+                    const SizedBox(height: 12),
+                    CupertinoButton(
+                      onPressed: _isSaving
+                          ? null
+                          : () => Navigator.of(context).pop(),
+                      child: Text(context.localization.cancelText),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
