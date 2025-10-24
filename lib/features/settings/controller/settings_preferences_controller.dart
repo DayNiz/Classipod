@@ -43,7 +43,7 @@ class SettingsPreferencesControllerNotifier
     );
     return SettingsPreferencesModel(
       languageLocaleCode: settingsPreferencesRepository.getLanguageLocaleCode(),
-      deviceColor: DeviceColor.values.byName(
+      deviceColor: DeviceColor.fromName(
         settingsPreferencesRepository.getDeviceColor(),
       ),
       clickWheelSize: ClickWheelSize.values.byName(
@@ -129,21 +129,14 @@ class SettingsPreferencesControllerNotifier
         .setLanguageLocaleCode(languageLocaleCode: locale.languageCode);
   }
 
-  Future<void> toggleDeviceColor() async {
-    switch (state.deviceColor) {
-      case DeviceColor.silver:
-        await ref
-            .read(settingsPreferencesRepositoryProvider)
-            .setDeviceColor(deviceColorName: DeviceColor.black.name);
-        state = state.copyWith(deviceColor: DeviceColor.black);
-        break;
-      case DeviceColor.black:
-        await ref
-            .read(settingsPreferencesRepositoryProvider)
-            .setDeviceColor(deviceColorName: DeviceColor.silver.name);
-        state = state.copyWith(deviceColor: DeviceColor.silver);
-        break;
+  Future<void> setDeviceColor(DeviceColor deviceColor) async {
+    if (state.deviceColor == deviceColor) {
+      return;
     }
+    state = state.copyWith(deviceColor: deviceColor);
+    await ref
+        .read(settingsPreferencesRepositoryProvider)
+        .setDeviceColor(deviceColorName: deviceColor.name);
   }
 
   Future<void> toggleClickWheelSize() async {

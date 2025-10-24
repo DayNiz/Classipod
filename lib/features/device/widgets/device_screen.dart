@@ -1,4 +1,3 @@
-import 'package:classipod/core/constants/app_palette.dart';
 import 'package:classipod/core/constants/constants.dart';
 import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/features/settings/controller/settings_preferences_controller.dart';
@@ -19,9 +18,10 @@ class DeviceScreen extends ConsumerWidget {
       ),
     );
 
-    final deviceColor = ref.watch(
+    final DeviceColor deviceColor = ref.watch(
       settingsPreferencesControllerProvider.select((e) => e.deviceColor),
     );
+    final deviceColorStyle = deviceColor.style;
 
     final size = MediaQuery.sizeOf(context);
 
@@ -34,9 +34,7 @@ class DeviceScreen extends ConsumerWidget {
           color: context.appDeviceScreenBackgroundColor,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: deviceColor == DeviceColor.black
-                ? AppPalette.darkDeviceScreenColor
-                : context.appDeviceScreenBorderColor,
+            color: deviceColorStyle.screenBorderColor,
             width: 5,
           ),
         ),

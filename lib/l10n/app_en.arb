@@ -271,6 +271,50 @@
   "@darkThemeTitle": {
     "description": "Label for the dark theme option"
   },
+  "orangeDeviceColor": "Orange",
+  "@orangeDeviceColor": {
+    "description": "The name of the orange device color"
+  },
+  "yellowDeviceColor": "Yellow",
+  "@yellowDeviceColor": {
+    "description": "The name of the yellow device color"
+  },
+  "purpleDeviceColor": "Purple",
+  "@purpleDeviceColor": {
+    "description": "The name of the purple device color"
+  },
+  "pinkDeviceColor": "Pink",
+  "@pinkDeviceColor": {
+    "description": "The name of the pink device color"
+  },
+  "brownDeviceColor": "Brown",
+  "@brownDeviceColor": {
+    "description": "The name of the brown device color"
+  },
+  "lightRedDeviceColor": "Light Red",
+  "@lightRedDeviceColor": {
+    "description": "The name of the light red device color"
+  },
+  "darkRedDeviceColor": "Dark Red",
+  "@darkRedDeviceColor": {
+    "description": "The name of the dark red device color"
+  },
+  "lightBlueDeviceColor": "Light Blue",
+  "@lightBlueDeviceColor": {
+    "description": "The name of the light blue device color"
+  },
+  "darkBlueDeviceColor": "Dark Blue",
+  "@darkBlueDeviceColor": {
+    "description": "The name of the dark blue device color"
+  },
+  "lightGreenDeviceColor": "Light Green",
+  "@lightGreenDeviceColor": {
+    "description": "The name of the light green device color"
+  },
+  "darkGreenDeviceColor": "Dark Green",
+  "@darkGreenDeviceColor": {
+    "description": "The name of the dark green device color"
+  },
   "resetSettingsTitle": "Reset Settings",
   "@resetSettingsTitle": {
     "description": "The title of the reset settings dialog"
