@@ -100,6 +100,8 @@ class MusicMetadata extends HiveObject {
   /// Rating of the track.
   final int rating;
 
+  final String? lyrics;
+
   MusicMetadata({
     this.trackName,
     this.trackArtistNames,
@@ -118,6 +120,7 @@ class MusicMetadata extends HiveObject {
     this.originalSongIndex = 0,
     this.isOnDevice = true,
     this.rating = 0,
+    this.lyrics,
   });
 
   factory MusicMetadata.fromAudioMetadata(
@@ -148,6 +151,7 @@ class MusicMetadata extends HiveObject {
       filePath: audioMetadata.file.path,
       thumbnailPath: thumbnailPath,
       originalSongIndex: originalSongIndex,
+      lyrics: audioMetadata.lyrics,
     );
   }
 
@@ -173,6 +177,7 @@ class MusicMetadata extends HiveObject {
     originalSongIndex: map['originalSongIndex'],
     isOnDevice: map['isOnDevice'],
     rating: map['rating'],
+    lyrics: map['lyrics'],
   );
 
   Map<String, dynamic> toMap() => {
@@ -193,6 +198,7 @@ class MusicMetadata extends HiveObject {
     'originalSongIndex': originalSongIndex,
     'isOnDevice': isOnDevice,
     'rating': rating,
+    'lyrics': lyrics,
   };
 
   factory MusicMetadata.fromJson(String source) =>
@@ -218,6 +224,7 @@ class MusicMetadata extends HiveObject {
     int? originalSongIndex,
     bool? isOnDevice,
     int? rating,
+    String? lyrics,
   }) {
     return MusicMetadata(
       trackName: trackName ?? this.trackName,
@@ -237,6 +244,7 @@ class MusicMetadata extends HiveObject {
       originalSongIndex: originalSongIndex ?? this.originalSongIndex,
       isOnDevice: isOnDevice ?? this.isOnDevice,
       rating: rating ?? this.rating,
+      lyrics: lyrics ?? this.lyrics,
     );
   }
 
@@ -376,7 +384,8 @@ class MusicMetadata extends HiveObject {
         trackDuration == other.trackDuration &&
         bitrate == other.bitrate &&
         filePath == other.filePath &&
-        rating == other.rating;
+        rating == other.rating &&
+        lyrics == other.lyrics;
   }
 
   @override
@@ -395,6 +404,7 @@ class MusicMetadata extends HiveObject {
     bitrate,
     filePath,
     rating,
+    lyrics,
   );
 }
 
