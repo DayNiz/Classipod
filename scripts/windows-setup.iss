@@ -54,9 +54,9 @@ Name: "{app}\uninstall-{#MyAppName}"; Filename: "{uninstallexe}"
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
-Type: files; Name: "{userdocs}\metadata_box.hive"
-Type: files; Name: "{userdocs}\metadata_box.lock"
-Type: files; Name: "{userdocs}\playlist_box.hive"
-Type: files; Name: "{userdocs}\playlist_box.lock"
-Type: files; Name: "{userdocs}\excluded_directories_box.hive"
-Type: files; Name: "{userdocs}\excluded_directories_box.lock"
+Type: files; Name: "{userdocs}\ClassiPod\metadata_box.hive"
+Type: files; Name: "{userdocs}\ClassiPod\metadata_box.lock"
+Type: files; Name: "{userdocs}\ClassiPod\playlist_box.hive"
+Type: files; Name: "{userdocs}\ClassiPod\playlist_box.lock"
+Type: files; Name: "{userdocs}\ClassiPod\excluded_directories_box.hive"
+Type: files; Name: "{userdocs}\ClassiPod\excluded_directories_box.lock"

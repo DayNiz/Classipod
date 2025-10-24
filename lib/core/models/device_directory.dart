@@ -3,11 +3,9 @@ import 'dart:io';
 import 'package:classipod/core/constants/constants.dart';
 
 class DeviceDirectory {
-  final Directory cacheDirectory;
   final Directory documentsDirectory;
 
   DeviceDirectory({
-    required this.cacheDirectory,
     required this.documentsDirectory,
   });
 
@@ -30,15 +28,14 @@ class DeviceDirectory {
   @override
   bool operator ==(Object other) {
     return other is DeviceDirectory &&
-        other.cacheDirectory.path == cacheDirectory.path &&
         other.documentsDirectory.path == documentsDirectory.path;
   }
 
   @override
-  int get hashCode => Object.hash(cacheDirectory, documentsDirectory);
+  int get hashCode => documentsDirectory.path.hashCode;
 
   @override
   String toString() {
-    return 'DeviceDirectory(cacheDirectory: ${cacheDirectory.path}, documentsDirectory: ${documentsDirectory.path})';
+    return 'DeviceDirectory(documentsDirectory: ${documentsDirectory.path})';
   }
 }

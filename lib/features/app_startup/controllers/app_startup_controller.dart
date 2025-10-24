@@ -34,7 +34,7 @@ final appStartupControllerProvider = FutureProvider<void>((ref) async {
     ],
     if (!kIsWeb) ref.watch(deviceDirectoryProvider.future),
     ref.watch(sharedPreferencesWithCacheProvider.future),
-    Hive.initFlutter(),
+    Hive.initFlutter("ClassiPod"),
   ]);
   Hive.registerAdapters();
   await Hive.openBox<MusicMetadata>(Constants.metadataBoxName);
