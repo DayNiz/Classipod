@@ -1,5 +1,4 @@
 import 'package:classipod/core/constants/app_palette.dart';
-import 'package:classipod/core/constants/assets.dart';
 import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/core/navigation/routes.dart';
 import 'package:classipod/features/app_startup/screens/app_startup_screen.dart';
@@ -19,6 +18,9 @@ void main() {
     const SystemUiOverlayStyle(
       systemNavigationBarColor: AppPalette.transparentColor,
       statusBarColor: AppPalette.transparentColor,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
     ),
   );
 
@@ -44,6 +46,9 @@ class DevelopmentClassipodApp extends ConsumerWidget {
         (value) => value.languageLocaleCode,
       ),
     );
+    final appTheme = ref.watch(
+      settingsPreferencesControllerProvider.select((value) => value.appTheme),
+    );
     final router = ref.watch(routerProvider);
     final debuggerTools = ref.watch(debuggerToolsProvider);
     debugRepaintRainbowEnabled = debuggerTools.debugRepaintRainbowEnabled;
@@ -64,16 +69,7 @@ class DevelopmentClassipodApp extends ConsumerWidget {
       checkerboardRasterCacheImages:
           debuggerTools.checkerboardRasterCacheImages,
       routerConfig: router,
-      theme: const CupertinoThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: CupertinoColors.white,
-        textTheme: CupertinoTextThemeData(
-          textStyle: TextStyle(
-            color: CupertinoColors.black,
-            fontFamily: Assets.helveticaFont,
-          ),
-        ),
-      ),
+      theme: appTheme.toCupertinoTheme(),
     );
   }
 }

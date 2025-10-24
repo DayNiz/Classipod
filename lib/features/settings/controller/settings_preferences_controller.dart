@@ -8,6 +8,7 @@ import 'package:classipod/core/models/music_metadata.dart';
 import 'package:classipod/core/navigation/routes.dart';
 import 'package:classipod/core/services/audio_player_service.dart';
 import 'package:classipod/features/music/playlist/models/playlist_model.dart';
+import 'package:classipod/features/settings/models/app_theme.dart';
 import 'package:classipod/features/settings/models/click_wheel_sensitivity.dart';
 import 'package:classipod/features/settings/models/click_wheel_size.dart';
 import 'package:classipod/features/settings/models/device_color.dart';
@@ -63,6 +64,7 @@ class SettingsPreferencesControllerNotifier
       ),
       splitScreenEnabled: settingsPreferencesRepository.getSplitScreenEnabled(),
       immersiveMode: settingsPreferencesRepository.getImmersiveMode(),
+      appTheme: AppTheme.fromName(settingsPreferencesRepository.getAppTheme()),
     );
   }
 
@@ -285,6 +287,16 @@ class SettingsPreferencesControllerNotifier
         .setSplitScreenEnabled(isSplitScreenEnabled: state.splitScreenEnabled);
   }
 
+  Future<void> toggleAppTheme() async {
+    final AppTheme updatedTheme = state.appTheme == AppTheme.light
+        ? AppTheme.dark
+        : AppTheme.light;
+    state = state.copyWith(appTheme: updatedTheme);
+    await ref
+        .read(settingsPreferencesRepositoryProvider)
+        .setAppTheme(appThemeName: updatedTheme.name);
+  }
+
   Future<void> toggleImmersiveMode() async {
     state = state.copyWith(immersiveMode: !state.immersiveMode);
     await ref
@@ -326,6 +338,9 @@ class SettingsPreferencesControllerNotifier
     await ref
         .read(settingsPreferencesRepositoryProvider)
         .setImmersiveMode(isImmersiveModeEnabled: false);
+    await ref
+        .read(settingsPreferencesRepositoryProvider)
+        .setAppTheme(appThemeName: AppTheme.light.name);
     ref.invalidateSelf();
   }
 

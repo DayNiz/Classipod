@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/core/extensions/duration_extensions.dart';
 import 'package:classipod/core/widgets/marquee_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,13 +49,14 @@ class CoverFlowAlbumSongListTile extends StatelessWidget {
                   flex: 5,
                   child: MarqueeText(
                     songName,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: isSelected
-                          ? CupertinoColors.white
-                          : CupertinoColors.black,
-                    ),
+                    style: CupertinoTheme.of(context).textTheme.textStyle
+                        .copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: isSelected
+                              ? context.appInverseTextColor
+                              : context.appPrimaryTextColor,
+                        ),
                   ),
                 ),
                 Flexible(
@@ -63,18 +65,19 @@ class CoverFlowAlbumSongListTile extends StatelessWidget {
                           CupertinoIcons.volume_up,
                           size: 16,
                           color: isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
+                              ? context.appInverseTextColor
+                              : context.appPrimaryTextColor,
                         )
                       : Text(
                           songDuration.getMinuteAndSecondString,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: isSelected
-                                ? CupertinoColors.white
-                                : CupertinoColors.black,
-                          ),
+                          style: CupertinoTheme.of(context).textTheme.textStyle
+                              .copyWith(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: isSelected
+                                    ? context.appInverseTextColor
+                                    : context.appPrimaryTextColor,
+                              ),
                           maxLines: 1,
                         ),
                 ),

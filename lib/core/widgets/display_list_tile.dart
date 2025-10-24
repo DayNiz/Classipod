@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class DisplayListTile extends StatelessWidget {
@@ -51,20 +52,21 @@ class DisplayListTile extends StatelessWidget {
                 Flexible(
                   child: Text(
                     text,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: isSelected
-                          ? CupertinoColors.white
-                          : CupertinoColors.black,
-                    ),
+                    style: CupertinoTheme.of(context).textTheme.textStyle
+                        .copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: isSelected
+                              ? context.appInverseTextColor
+                              : context.appPrimaryTextColor,
+                        ),
                     maxLines: 1,
                   ),
                 ),
                 if (isSelected)
-                  const Icon(
+                  Icon(
                     CupertinoIcons.right_chevron,
-                    color: CupertinoColors.white,
+                    color: context.appInverseTextColor,
                   ),
               ],
             ),

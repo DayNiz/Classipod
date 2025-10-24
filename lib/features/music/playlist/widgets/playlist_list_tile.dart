@@ -53,32 +53,34 @@ class PlaylistListTile extends StatelessWidget {
                     children: [
                       Text(
                         playlistModel.name,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appPrimaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                       Text(
                         context.localization.nSongs(playlistModel.songs.length),
-                        style: TextStyle(
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : AppPalette.hintTextColor,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appSecondaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                     ],
                   ),
                 ),
                 if (isSelected)
-                  const Icon(
+                  Icon(
                     CupertinoIcons.chevron_right,
                     size: 18,
-                    color: CupertinoColors.white,
+                    color: context.appInverseTextColor,
                   ),
               ],
             ),

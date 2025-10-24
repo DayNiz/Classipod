@@ -57,8 +57,8 @@ class _PlaylistSongsMoreOptionsModalState
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: CupertinoColors.white,
-        border: Border.all(),
+        color: context.appSurfaceColor,
+        border: Border.all(color: context.appOutlineColor),
       ),
       child: ListView.builder(
         shrinkWrap: true,

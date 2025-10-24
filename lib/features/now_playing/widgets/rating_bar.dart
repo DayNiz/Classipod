@@ -1,4 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
+import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class RatingBar extends StatelessWidget {
@@ -27,15 +28,15 @@ class RatingBar extends StatelessWidget {
                     size: 24,
                     color: AppPalette.selectedTileGradientColor2,
                   )
-                : const SizedBox(
+                : SizedBox(
                     height: 24,
                     width: 24,
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: DecoratedBox(
                         decoration: ShapeDecoration(
-                          color: CupertinoColors.black,
-                          shape: CircleBorder(),
+                          color: context.appPrimaryTextColor,
+                          shape: const CircleBorder(),
                         ),
                       ),
                     ),

@@ -75,13 +75,14 @@ class PlaylistSongListTile extends StatelessWidget {
                       child: Text(
                         songMetadata.trackName ??
                             context.localization.unknownSong,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appPrimaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                     ),
@@ -90,11 +91,12 @@ class PlaylistSongListTile extends StatelessWidget {
                       child: Text(
                         songMetadata.getTrackArtistNames ??
                             context.localization.unknownArtist,
-                        style: TextStyle(
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : AppPalette.hintTextColor,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appSecondaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                     ),
@@ -106,13 +108,13 @@ class PlaylistSongListTile extends StatelessWidget {
                   CupertinoIcons.volume_up,
                   size: 18,
                   color: isSelected
-                      ? CupertinoColors.white
-                      : CupertinoColors.black,
+                      ? context.appInverseTextColor
+                      : context.appPrimaryTextColor,
                 ),
               if (!isCurrentlyPlaying && isSelected)
-                const Icon(
+                Icon(
                   CupertinoIcons.right_chevron,
-                  color: CupertinoColors.white,
+                  color: context.appInverseTextColor,
                 ),
             ],
           ),

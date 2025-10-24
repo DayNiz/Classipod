@@ -1,6 +1,7 @@
 import 'package:classipod/core/constants/constants.dart';
 import 'package:classipod/core/models/shared_preference_keys.dart';
 import 'package:classipod/core/providers/shared_preferences_with_cache_provider.dart';
+import 'package:classipod/features/settings/models/app_theme.dart';
 import 'package:classipod/features/settings/models/click_wheel_sensitivity.dart';
 import 'package:classipod/features/settings/models/click_wheel_size.dart';
 import 'package:classipod/features/settings/models/device_color.dart';
@@ -91,6 +92,13 @@ class SettingsPreferencesRepository {
         VolumeMode.app.name;
   }
 
+  String getAppTheme() {
+    return _sharedPreferencesWithCache.getString(
+          SharedPreferencesKeys.appTheme.name,
+        ) ??
+        AppTheme.light.name;
+  }
+
   bool getImmersiveMode() {
     return _sharedPreferencesWithCache.getBool(
           SharedPreferencesKeys.immersiveMode.name,
@@ -166,6 +174,13 @@ class SettingsPreferencesRepository {
     return _sharedPreferencesWithCache.setString(
       SharedPreferencesKeys.volumeMode.name,
       volumeModeName,
+    );
+  }
+
+  Future<void> setAppTheme({required String appThemeName}) async {
+    return _sharedPreferencesWithCache.setString(
+      SharedPreferencesKeys.appTheme.name,
+      appThemeName,
     );
   }
 

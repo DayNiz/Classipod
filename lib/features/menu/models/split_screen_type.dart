@@ -4,6 +4,7 @@ enum SplitScreenType {
   shuffle,
   nowPlaying,
   language,
+  appTheme,
   deviceColor,
   clickWheelSize,
   clickWheelSensitivity,

@@ -275,12 +275,12 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               if (nowPlayingDetails.isShuffleEnabled)
-                const Padding(
-                  padding: EdgeInsets.only(right: 10),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
                   child: Icon(
                     CupertinoIcons.shuffle,
                     size: 20,
-                    color: CupertinoColors.black,
+                    color: context.appPrimaryTextColor,
                   ),
                 ),
               if (nowPlayingDetails.loopMode != LoopMode.off)
@@ -291,7 +291,7 @@ class _NowPlayingScreenState extends ConsumerState<NowPlayingScreen> {
                         ? CupertinoIcons.repeat
                         : CupertinoIcons.repeat_1,
                     size: 20,
-                    color: CupertinoColors.black,
+                    color: context.appPrimaryTextColor,
                   ),
                 ),
               if (!nowPlayingDetails.isShuffleEnabled &&

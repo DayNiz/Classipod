@@ -8,6 +8,7 @@ enum SharedPreferencesKeys {
   vibrate,
   clickWheelSound,
   volumeMode,
+  appTheme,
   splitScreenEnabled,
   immersiveMode,
   isMenuFirstTime,

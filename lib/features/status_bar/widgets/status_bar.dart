@@ -11,21 +11,33 @@ class StatusBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme =
+        CupertinoTheme.of(context).brightness == Brightness.dark;
+    final gradientColors = isDarkTheme
+        ? const [
+            AppPalette.darkStatusBarGradientColor1,
+            AppPalette.darkStatusBarGradientColor2,
+          ]
+        : const [
+            AppPalette.statusBarGradientColor1,
+            AppPalette.statusBarGradientColor2,
+          ];
+    final borderColor = isDarkTheme
+        ? AppPalette.darkStatusBarBorderColor
+        : AppPalette.statusBarBorderColor;
+
     return SizedBox(
       height: 30,
       width: double.infinity,
       child: DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              AppPalette.statusBarGradientColor1,
-              AppPalette.statusBarGradientColor2,
-            ],
+            colors: gradientColors,
           ),
           border: Border(
-            bottom: BorderSide(color: AppPalette.statusBarBorderColor),
+            bottom: BorderSide(color: borderColor),
           ),
         ),
         child: Padding(
@@ -36,6 +48,7 @@ class StatusBar extends StatelessWidget {
                 child: Text(
                   title,
                   style: const TextStyle(
+                    color: CupertinoColors.black,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),

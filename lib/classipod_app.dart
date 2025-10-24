@@ -1,4 +1,3 @@
-import 'package:classipod/core/constants/assets.dart';
 import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/core/navigation/routes.dart';
 import 'package:classipod/features/settings/controller/settings_preferences_controller.dart';
@@ -16,6 +15,9 @@ class ClassipodApp extends ConsumerWidget {
         (value) => value.languageLocaleCode,
       ),
     );
+    final appTheme = ref.watch(
+      settingsPreferencesControllerProvider.select((value) => value.appTheme),
+    );
     final router = ref.watch(routerProvider);
     return CupertinoApp.router(
       onGenerateTitle: (context) => context.localization.appTitle,
@@ -24,16 +26,7 @@ class ClassipodApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       routerConfig: router,
       locale: Locale(languageLocaleCode),
-      theme: const CupertinoThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: CupertinoColors.white,
-        textTheme: CupertinoTextThemeData(
-          textStyle: TextStyle(
-            color: CupertinoColors.black,
-            fontFamily: Assets.helveticaFont,
-          ),
-        ),
-      ),
+      theme: appTheme.toCupertinoTheme(),
     );
   }
 }

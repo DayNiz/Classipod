@@ -251,6 +251,10 @@
   "@languageScreenTitle": {
     "description": "The title of the language screen"
   },
+  "themeSettingTitle": "Theme",
+  "@themeSettingTitle": {
+    "description": "Title for the theme selection setting"
+  },
   "silverDeviceColor": "Silver",
   "@silverDeviceColor": {
     "description": "The name of the silver device color"
@@ -258,6 +262,14 @@
   "blackDeviceColor": "Black",
   "@blackDeviceColor": {
     "description": "The name of the black device color"
+  },
+  "lightThemeTitle": "Light",
+  "@lightThemeTitle": {
+    "description": "Label for the light theme option"
+  },
+  "darkThemeTitle": "Dark",
+  "@darkThemeTitle": {
+    "description": "Label for the dark theme option"
   },
   "resetSettingsTitle": "Reset Settings",
   "@resetSettingsTitle": {

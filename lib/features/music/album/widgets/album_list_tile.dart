@@ -91,13 +91,14 @@ class AlbumListTile extends StatelessWidget {
                   children: [
                     Text(
                       albumDetails.albumName,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: isSelected
-                            ? CupertinoColors.white
-                            : CupertinoColors.black,
-                      ),
+                      style: CupertinoTheme.of(context).textTheme.textStyle
+                          .copyWith(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: isSelected
+                                ? context.appInverseTextColor
+                                : context.appPrimaryTextColor,
+                          ),
                       maxLines: 1,
                     ),
                     const SizedBox(height: 2),
@@ -107,20 +108,21 @@ class AlbumListTile extends StatelessWidget {
                           : context.localization.nSongs(
                               albumDetails.albumSongs.length,
                             ),
-                      style: TextStyle(
-                        color: isSelected
-                            ? CupertinoColors.white
-                            : AppPalette.hintTextColor,
-                      ),
+                      style: CupertinoTheme.of(context).textTheme.textStyle
+                          .copyWith(
+                            color: isSelected
+                                ? context.appInverseTextColor
+                                : context.appSecondaryTextColor,
+                          ),
                       maxLines: 1,
                     ),
                   ],
                 ),
               ),
               if (isSelected)
-                const Icon(
+                Icon(
                   CupertinoIcons.right_chevron,
-                  color: CupertinoColors.white,
+                  color: context.appInverseTextColor,
                 ),
             ],
           ),

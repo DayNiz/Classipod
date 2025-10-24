@@ -59,22 +59,24 @@ class SongListTile extends StatelessWidget {
                     children: [
                       Text(
                         songName ?? context.localization.unknownSong,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : CupertinoColors.black,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appPrimaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                       Text(
                         trackArtistNames ?? context.localization.unknownArtist,
-                        style: TextStyle(
-                          color: isSelected
-                              ? CupertinoColors.white
-                              : AppPalette.hintTextColor,
-                        ),
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(
+                              color: isSelected
+                                  ? context.appInverseTextColor
+                                  : context.appSecondaryTextColor,
+                            ),
                         maxLines: 1,
                       ),
                     ],
@@ -85,8 +87,8 @@ class SongListTile extends StatelessWidget {
                     CupertinoIcons.volume_up,
                     size: 18,
                     color: isSelected
-                        ? CupertinoColors.white
-                        : CupertinoColors.black,
+                        ? context.appInverseTextColor
+                        : context.appPrimaryTextColor,
                   ),
               ],
             ),

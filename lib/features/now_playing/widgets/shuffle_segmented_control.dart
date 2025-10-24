@@ -18,7 +18,7 @@ class ShuffleSegmentedControl extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(CupertinoIcons.shuffle, color: CupertinoColors.black),
+        Icon(CupertinoIcons.shuffle, color: context.appPrimaryTextColor),
         const SizedBox(width: 20),
         CustomSlidingSegmentedControl<bool>(
           groupValue: isShuffleEnabled,
@@ -29,7 +29,7 @@ class ShuffleSegmentedControl extends StatelessWidget {
               style: TextStyle(
                 color: !isShuffleEnabled
                     ? AppPalette.selectedTileGradientColor2
-                    : null,
+                    : context.appPrimaryTextColor,
               ),
             ),
             true: Text(
@@ -37,7 +37,7 @@ class ShuffleSegmentedControl extends StatelessWidget {
               style: TextStyle(
                 color: isShuffleEnabled
                     ? AppPalette.selectedTileGradientColor2
-                    : null,
+                    : context.appPrimaryTextColor,
               ),
             ),
           },

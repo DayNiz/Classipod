@@ -46,6 +46,9 @@ class AppPalette {
   static const Color statusBarGradientColor1 = Color(0xFFFCFCFC);
   static const Color statusBarGradientColor2 = Color(0xFF8A8C8B);
   static const Color statusBarBorderColor = Color(0xFF71797B);
+  static const Color darkStatusBarGradientColor1 = Color(0xFFB5B7BC);
+  static const Color darkStatusBarGradientColor2 = Color(0xFF5E6166);
+  static const Color darkStatusBarBorderColor = Color(0xFF3E4045);
   static const Color hintTextColor = Color(0xFF4B4B4B);
   static const Color inActiveSliderGradientColor1 = Color(0xFFFBFBFB);
   static const Color inActiveSliderGradientColor2 = Color(0xFFEFEFEF);
@@ -67,4 +70,6 @@ class AppPalette {
   static const Color darkScreenBackgroundGradient2 = Color(0xFF4C5258);
   static const Color darkScreenLightIconColor = Color(0xFFD3D3D3);
   static const Color emptyScreenDarkIconColor = Color(0xFF9697BB);
+  static const Color darkReflectionOverlayColor1 = Color(0x73000000);
+  static const Color darkReflectionOverlayColor2 = Color(0xCC000000);
 }
