@@ -795,7 +795,7 @@ packages:
     description:
       path: "packages/on_audio_query"
       ref: main
-      resolved-ref: "9d28d0706f27a9dc7115c8890e9160f02bd778d1"
+      resolved-ref: a0cc31269678d75a39f33b375c91481ae9a17b72
       url: "https://github.com/adeeteya/on_audio_query.git"
     source: git
     version: "2.9.0"
@@ -804,7 +804,7 @@ packages:
     description:
       path: "packages/on_audio_query_android"
       ref: main
-      resolved-ref: "9d28d0706f27a9dc7115c8890e9160f02bd778d1"
+      resolved-ref: a0cc31269678d75a39f33b375c91481ae9a17b72
       url: "https://github.com/adeeteya/on_audio_query.git"
     source: git
     version: "1.1.0"
@@ -813,7 +813,7 @@ packages:
     description:
       path: "packages/on_audio_query_ios"
       ref: main
-      resolved-ref: "9d28d0706f27a9dc7115c8890e9160f02bd778d1"
+      resolved-ref: a0cc31269678d75a39f33b375c91481ae9a17b72
       url: "https://github.com/adeeteya/on_audio_query.git"
     source: git
     version: "1.1.0"
@@ -822,7 +822,7 @@ packages:
     description:
       path: "packages/on_audio_query_platform_interface"
       ref: main
-      resolved-ref: "9d28d0706f27a9dc7115c8890e9160f02bd778d1"
+      resolved-ref: a0cc31269678d75a39f33b375c91481ae9a17b72
       url: "https://github.com/adeeteya/on_audio_query.git"
     source: git
     version: "1.7.0"
@@ -831,7 +831,7 @@ packages:
     description:
       path: "packages/on_audio_query_web"
       ref: main
-      resolved-ref: "9d28d0706f27a9dc7115c8890e9160f02bd778d1"
+      resolved-ref: a0cc31269678d75a39f33b375c91481ae9a17b72
       url: "https://github.com/adeeteya/on_audio_query.git"
     source: git
     version: "1.6.0"

@@ -5,6 +5,7 @@
 #define MyAppExeName "Classipod.exe"
 #define MyAppContact "adeeteya@gmail.com"
 #define MyAppCopyright "Copyright (C) 2025 Adeeteya"
+#define Workspace GetEnv("GITHUB_WORKSPACE")
 
 [Setup]
 AppId={{94F37DBE-FC81-4E38-B1F1-701EEE9C3D0A}
@@ -21,9 +22,9 @@ AppContact={#MyAppContact}
 AppCopyright={#MyAppCopyright}
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=C:\a\Classipod\Classipod\
+OutputDir={#Workspace}
 OutputBaseFilename=Classipod-Windows
-SetupIconFile=C:\a\Classipod\Classipod\windows\runner\resources\app_icon.ico
+SetupIconFile={#Workspace}\windows\runner\resources\app_icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -43,7 +44,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\a\Classipod\Classipod\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#Workspace}\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

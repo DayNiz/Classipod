@@ -5,9 +5,7 @@ import 'package:classipod/core/constants/constants.dart';
 class DeviceDirectory {
   final Directory documentsDirectory;
 
-  DeviceDirectory({
-    required this.documentsDirectory,
-  });
+  DeviceDirectory({required this.documentsDirectory});
 
   String get musicFolderPath {
     if (Platform.isAndroid) {

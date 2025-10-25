@@ -9,14 +9,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final metadataReaderRepositoryProvider =
     Provider.autoDispose<MetadataReaderRepository>((ref) {
-      final documentsDirectory =
-          ref.read(deviceDirectoryProvider).requireValue.documentsDirectory;
+      final documentsDirectory = ref
+          .read(deviceDirectoryProvider)
+          .requireValue
+          .documentsDirectory;
       final thumbnailsDirectoryPath =
           '${documentsDirectory.path}/ClassiPod/thumbnails';
       Directory(thumbnailsDirectoryPath).createSync(recursive: true);
-      return MetadataReaderRepository(
-        thumbnailsDirectoryPath,
-      );
+      return MetadataReaderRepository(thumbnailsDirectoryPath);
     });
 
 class MetadataReaderRepository {
