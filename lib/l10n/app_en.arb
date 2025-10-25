@@ -487,6 +487,10 @@
   "@large": {
     "description": "The text for large click wheel size"
   },
+  "veryLow": "Very Low",
+  "@veryLow": {
+    "description": "The text for very low click wheel sensitivity"
+  },
   "low": "Low",
   "@low": {
     "description": "The text for low click wheel sensitivity"
