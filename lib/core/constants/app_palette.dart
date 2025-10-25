@@ -110,15 +110,15 @@ class AppPalette {
   );
   static const Color greenDeviceButtonAccentColor = Color(0xFFF7F7F2);
 
-  static const Color pinkDeviceFrameGradientColor1 = Color(0xFFFFE6F3);
-  static const Color pinkDeviceFrameGradientColor2 = Color(0xFFE91E63);
-  static const Color pinkDeviceControlBorderColor = Color(0xFFF8BBD0);
-  static const Color pinkDeviceButtonColor = Color(0xFFC2185B);
+  static const Color pinkDeviceFrameGradientColor1 = Color(0xFFFFD2EE);
+  static const Color pinkDeviceFrameGradientColor2 = Color(0xFFD10072);
+  static const Color pinkDeviceControlBorderColor = Color(0xFFF5A0CE);
+  static const Color pinkDeviceButtonColor = Color(0xFFD00066);
   static const Color pinkDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFFFF0F7,
+    0xFFFFC4E9,
   );
   static const Color pinkDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFF8BBD0,
+    0xFFE20079,
   );
 
   static const Color brownDeviceFrameGradientColor1 = Color(0xFFF1E0D6);
