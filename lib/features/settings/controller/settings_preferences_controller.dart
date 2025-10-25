@@ -164,6 +164,16 @@ class SettingsPreferencesControllerNotifier
 
   Future<void> toggleClickWheelSensitivity() async {
     switch (state.clickWheelSensitivity) {
+      case ClickWheelSensitivity.veryLow:
+        await ref
+            .read(settingsPreferencesRepositoryProvider)
+            .setClickWheelSensitivity(
+              clickWheelSensitivityName: ClickWheelSensitivity.low.name,
+            );
+        state = state.copyWith(
+          clickWheelSensitivity: ClickWheelSensitivity.low,
+        );
+        break;
       case ClickWheelSensitivity.low:
         await ref
             .read(settingsPreferencesRepositoryProvider)
@@ -188,10 +198,10 @@ class SettingsPreferencesControllerNotifier
         await ref
             .read(settingsPreferencesRepositoryProvider)
             .setClickWheelSensitivity(
-              clickWheelSensitivityName: ClickWheelSensitivity.low.name,
+              clickWheelSensitivityName: ClickWheelSensitivity.veryLow.name,
             );
         state = state.copyWith(
-          clickWheelSensitivity: ClickWheelSensitivity.low,
+          clickWheelSensitivity: ClickWheelSensitivity.veryLow,
         );
         break;
     }

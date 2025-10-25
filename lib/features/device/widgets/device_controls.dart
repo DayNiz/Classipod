@@ -139,6 +139,12 @@ class _DeviceControlsState extends ConsumerState<DeviceControls> {
     late final double smallThresholdRotationalChange;
     late final double bigThresholdRotationalChange;
     switch (clickWheelSensitivity) {
+      case ClickWheelSensitivity.veryLow:
+        smallThresholdRotationalChange =
+            Constants.clickWheelVeryLowSensitivitySmallThreshold;
+        bigThresholdRotationalChange =
+            Constants.clickWheelVeryLowSensitivityBigThreshold;
+        break;
       case ClickWheelSensitivity.low:
         smallThresholdRotationalChange =
             Constants.clickWheelLowSensitivitySmallThreshold;

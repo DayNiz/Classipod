@@ -18,7 +18,7 @@ class AppPalette {
   static const Color lightDeviceFrameGradientColor2 = Color(0xFFADADAD);
 
   // static const Color lightDeviceScreenColor = Color(0xFF6D6D6D);
-  static const Color lightDeviceScreenBorderColor = Color(0xFF2F2F2F);
+  static const Color deviceScreenBorderColor = Color(0xFF000000);
   static const Color lightDeviceControlBorderColor = Color(0xFFAEADAD);
   static const Color lightDeviceButtonColor = Color(0xFF8793A0);
   static const Color lightDeviceControlInnerButtonGradientColor1 = Color(
@@ -28,117 +28,109 @@ class AppPalette {
     0xFFE1E1E1,
   );
 
-  static const Color lightRedDeviceFrameGradientColor1 = Color(0xFFFEE4E8);
-  static const Color lightRedDeviceFrameGradientColor2 = Color(0xFFD72638);
-  static const Color lightRedDeviceControlBorderColor = Color(0xFFF5A9B8);
-  static const Color lightRedDeviceButtonColor = Color(0xFFB5161C);
-  static const Color lightRedDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFFFF0F2,
+  static const Color redDeviceFrameGradientColor1 = Color(0xFFE74954);
+  static const Color redDeviceFrameGradientColor2 = Color(0xFF7C0015);
+  static const Color redDeviceControlBackgroundColor = Color(0xFF050505);
+  static const Color redDeviceControlBorderColor = Color(0xFF1D1D1D);
+  static const Color redDeviceControlInnerButtonGradientColor1 = Color(
+    0xFFFF5F6D,
   );
-  static const Color lightRedDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFF9C3CC,
+  static const Color redDeviceControlInnerButtonGradientColor2 = Color(
+    0xFF9A001F,
   );
+  static const Color redDeviceButtonAccentColor = Color(0xFFF7F7F2);
 
-  static const Color darkRedDeviceFrameGradientColor1 = Color(0xFF6E1423);
-  static const Color darkRedDeviceFrameGradientColor2 = Color(0xFF2C060E);
-  static const Color darkRedDeviceControlBackgroundColor = Color(0xFF3B0A12);
-  static const Color darkRedDeviceControlBorderColor = Color(0xFF8B2B3C);
-  static const Color darkRedDeviceControlInnerButtonGradientColor1 = Color(
-    0xFF4F111E,
-  );
-  static const Color darkRedDeviceControlInnerButtonGradientColor2 = Color(
-    0xFF7A1F32,
-  );
-  static const Color darkRedDeviceButtonAccentColor = Color(0xFFF8D7DA);
-
-  static const Color orangeDeviceFrameGradientColor1 = Color(0xFFFFEACD);
-  static const Color orangeDeviceFrameGradientColor2 = Color(0xFFFB8C00);
-  static const Color orangeDeviceControlBorderColor = Color(0xFFFFC46B);
-  static const Color orangeDeviceButtonColor = Color(0xFFEF6C00);
+  static const Color orangeDeviceFrameGradientColor1 = Color(0xFFFFE7B6);
+  static const Color orangeDeviceFrameGradientColor2 = Color(0xFFE37400);
+  static const Color orangeDeviceControlBorderColor = Color(0xFFF9B54E);
+  static const Color orangeDeviceButtonColor = Color(0xFFE06600);
   static const Color orangeDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFFFF4E5,
+    0xFFFFE2A1,
   );
   static const Color orangeDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFFFD9B0,
+    0xFFF59A28,
   );
 
-  static const Color lightBlueDeviceFrameGradientColor1 = Color(0xFFE0ECFF);
-  static const Color lightBlueDeviceFrameGradientColor2 = Color(0xFF1E6AFB);
-  static const Color lightBlueDeviceControlBorderColor = Color(0xFFA9C7FF);
-  static const Color lightBlueDeviceButtonColor = Color(0xFF1C3FAA);
-  static const Color lightBlueDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFF0F6FF,
+  static const Color blueDeviceFrameGradientColor1 = Color(0xFF9FD3FF);
+  static const Color blueDeviceFrameGradientColor2 = Color(0xFF0F4C9A);
+  static const Color blueDeviceControlBackgroundColor = Color(0xFF1F61B3);
+  static const Color blueDeviceControlBorderColor = Color(0xFF3E7DD3);
+  static const Color blueDeviceControlInnerButtonGradientColor1 = Color(
+    0xFF4D8FE6,
   );
-  static const Color lightBlueDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFD2E3FF,
+  static const Color blueDeviceControlInnerButtonGradientColor2 = Color(
+    0xFF1C4F9A,
   );
+  static const Color blueDeviceButtonAccentColor = Color(0xFFF8FCFF);
 
-  static const Color darkBlueDeviceFrameGradientColor1 = Color(0xFF24436F);
-  static const Color darkBlueDeviceFrameGradientColor2 = Color(0xFF0A1F3F);
-  static const Color darkBlueDeviceControlBackgroundColor = Color(0xFF102A4C);
-  static const Color darkBlueDeviceControlBorderColor = Color(0xFF4A6FAF);
-  static const Color darkBlueDeviceControlInnerButtonGradientColor1 = Color(
-    0xFF1B355C,
-  );
-  static const Color darkBlueDeviceControlInnerButtonGradientColor2 = Color(
-    0xFF2F4F82,
-  );
-  static const Color darkBlueDeviceButtonAccentColor = Color(0xFFAEC8FF);
-
-  static const Color purpleDeviceFrameGradientColor1 = Color(0xFFF0E5FF);
-  static const Color purpleDeviceFrameGradientColor2 = Color(0xFF7B2CBF);
-  static const Color purpleDeviceControlBorderColor = Color(0xFFD7B7FF);
-  static const Color purpleDeviceButtonColor = Color(0xFF5A189A);
+  static const Color purpleDeviceFrameGradientColor1 = Color(0xFFE6C9FF);
+  static const Color purpleDeviceFrameGradientColor2 = Color(0xFF6A1B9A);
+  static const Color purpleDeviceControlBackgroundColor = Color(0xFF050505);
+  static const Color purpleDeviceControlBorderColor = Color(0xFF1D1D1D);
+  static const Color purpleDeviceButtonColor = Color(0xFFF7F7F2);
   static const Color purpleDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFF7EEFF,
+    0xFFF3DFFF,
   );
   static const Color purpleDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFE0C9FF,
+    0xFFB04CCC,
   );
 
-  static const Color yellowDeviceFrameGradientColor1 = Color(0xFFFFF9E3);
-  static const Color yellowDeviceFrameGradientColor2 = Color(0xFFFFC107);
-  static const Color yellowDeviceControlBorderColor = Color(0xFFFFE082);
-  static const Color yellowDeviceButtonColor = Color(0xFFB98900);
+  static const Color yellowDeviceFrameGradientColor1 = Color(0xFFFFF0B8);
+  static const Color yellowDeviceFrameGradientColor2 = Color(0xFFF2A300);
+  static const Color yellowDeviceControlBackgroundColor = Color(0xFF050505);
+  static const Color yellowDeviceControlBorderColor = Color(0xFF1D1D1D);
+  static const Color yellowDeviceButtonColor = Color(0xFFF7F7F2);
   static const Color yellowDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFFFF5CC,
+    0xFFFFEAA0,
   );
   static const Color yellowDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFFFD278,
+    0xFFF2A300,
   );
 
-  static const Color lightGreenDeviceFrameGradientColor1 = Color(0xFFE2F8EC);
-  static const Color lightGreenDeviceFrameGradientColor2 = Color(0xFF2E7D32);
-  static const Color lightGreenDeviceControlBorderColor = Color(0xFFA5D6A7);
-  static const Color lightGreenDeviceButtonColor = Color(0xFF2E7D32);
-  static const Color lightGreenDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFE8F5E9,
+  static const Color goldDeviceFrameGradientColor1 = Color(0xFFFFF3C3);
+  static const Color goldDeviceFrameGradientColor2 = Color(0xFFB27700);
+  static const Color goldDeviceControlBackgroundColor = Color(0xFF050505);
+  static const Color goldDeviceControlBorderColor = Color(0xFF1D1D1D);
+  static const Color goldDeviceButtonColor = Color(0xFFF7F7F2);
+  static const Color goldDeviceControlInnerButtonGradientColor1 = Color(
+    0xFFFFE28C,
   );
-  static const Color lightGreenDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFB2DFB4,
+  static const Color goldDeviceControlInnerButtonGradientColor2 = Color(
+    0xFFD08900,
   );
 
-  static const Color darkGreenDeviceFrameGradientColor1 = Color(0xFF1F4D2C);
-  static const Color darkGreenDeviceFrameGradientColor2 = Color(0xFF0C2614);
-  static const Color darkGreenDeviceControlBackgroundColor = Color(0xFF12301B);
-  static const Color darkGreenDeviceControlBorderColor = Color(0xFF4B7F55);
-  static const Color darkGreenDeviceControlInnerButtonGradientColor1 = Color(
-    0xFF1A3E24,
+  static const Color limeDeviceFrameGradientColor1 = Color(0xFFE9FF87);
+  static const Color limeDeviceFrameGradientColor2 = Color(0xFF3C9E00);
+  static const Color limeDeviceControlBorderColor = Color(0xFFA0D94B);
+  static const Color limeDeviceButtonColor = Color(0xFF318100);
+  static const Color limeDeviceControlInnerButtonGradientColor1 = Color(
+    0xFFF2FFB5,
   );
-  static const Color darkGreenDeviceControlInnerButtonGradientColor2 = Color(
-    0xFF2E5D38,
+  static const Color limeDeviceControlInnerButtonGradientColor2 = Color(
+    0xFF6BC300,
   );
-  static const Color darkGreenDeviceButtonAccentColor = Color(0xFFBEE5C8);
 
-  static const Color pinkDeviceFrameGradientColor1 = Color(0xFFFFE6F3);
-  static const Color pinkDeviceFrameGradientColor2 = Color(0xFFE91E63);
-  static const Color pinkDeviceControlBorderColor = Color(0xFFF8BBD0);
-  static const Color pinkDeviceButtonColor = Color(0xFFC2185B);
+  static const Color greenDeviceFrameGradientColor1 = Color(0xFFE0FF97);
+  static const Color greenDeviceFrameGradientColor2 = Color(0xFF0E5C2A);
+  static const Color greenDeviceControlBackgroundColor = Color(0xFF050505);
+  static const Color greenDeviceControlBorderColor = Color(0xFF1D1D1D);
+  static const Color greenDeviceControlInnerButtonGradientColor1 = Color(
+    0xFFC8FF6E,
+  );
+  static const Color greenDeviceControlInnerButtonGradientColor2 = Color(
+    0xFF4AA12A,
+  );
+  static const Color greenDeviceButtonAccentColor = Color(0xFFF7F7F2);
+
+  static const Color pinkDeviceFrameGradientColor1 = Color(0xFFFFD2EE);
+  static const Color pinkDeviceFrameGradientColor2 = Color(0xFFD10072);
+  static const Color pinkDeviceControlBorderColor = Color(0xFFF5A0CE);
+  static const Color pinkDeviceButtonColor = Color(0xFFD00066);
   static const Color pinkDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFFFF0F7,
+    0xFFFFC4E9,
   );
   static const Color pinkDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFF8BBD0,
+    0xFFE20079,
   );
 
   static const Color brownDeviceFrameGradientColor1 = Color(0xFFF1E0D6);

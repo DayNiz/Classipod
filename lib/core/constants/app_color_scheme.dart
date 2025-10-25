@@ -42,8 +42,8 @@ class AppColorScheme {
 
   static const CupertinoDynamicColor deviceScreenBorder =
       CupertinoDynamicColor.withBrightness(
-        color: AppPalette.lightDeviceScreenBorderColor,
-        darkColor: Color(0xFF2C2D30),
+        color: AppPalette.deviceScreenBorderColor,
+        darkColor: AppPalette.deviceScreenBorderColor,
       );
 
   static const CupertinoDynamicColor deviceScreenBackground =
