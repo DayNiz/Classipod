@@ -254,7 +254,7 @@ enum DeviceColor {
             AppPalette.purpleDeviceFrameGradientColor1,
             AppPalette.purpleDeviceFrameGradientColor2,
           ],
-          controlBackgroundColor: CupertinoColors.white,
+          controlBackgroundColor: AppPalette.purpleDeviceControlBackgroundColor,
           controlBorderColor: AppPalette.purpleDeviceControlBorderColor,
           innerButtonGradientColors: [
             AppPalette.purpleDeviceControlInnerButtonGradientColor1,
