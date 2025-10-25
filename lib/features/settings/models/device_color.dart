@@ -31,6 +31,7 @@ enum DeviceColor {
   red,
   orange,
   yellow,
+  gold,
   lime,
   green,
   blue,
@@ -44,6 +45,8 @@ enum DeviceColor {
       case 'darkRed':
       case 'red':
         return DeviceColor.red;
+      case 'gold':
+        return DeviceColor.gold;
       case 'lime':
       case 'lightGreen':
         return DeviceColor.lime;
@@ -77,6 +80,8 @@ enum DeviceColor {
         return context.localization.orangeDeviceColor;
       case yellow:
         return context.localization.yellowDeviceColor;
+      case gold:
+        return context.localization.goldDeviceColor;
       case lime:
         return context.localization.limeDeviceColor;
       case green:
@@ -177,6 +182,23 @@ enum DeviceColor {
           ],
           buttonAccentColor: AppPalette.yellowDeviceButtonColor,
           buttonIconColor: AppPalette.yellowDeviceButtonColor,
+          isDark: false,
+        );
+      case DeviceColor.gold:
+        return const DeviceColorStyle(
+          noiseOpacity: 1,
+          frameGradientColors: [
+            AppPalette.goldDeviceFrameGradientColor1,
+            AppPalette.goldDeviceFrameGradientColor2,
+          ],
+          controlBackgroundColor: AppPalette.goldDeviceControlBackgroundColor,
+          controlBorderColor: AppPalette.goldDeviceControlBorderColor,
+          innerButtonGradientColors: [
+            AppPalette.goldDeviceControlInnerButtonGradientColor1,
+            AppPalette.goldDeviceControlInnerButtonGradientColor2,
+          ],
+          buttonAccentColor: AppPalette.goldDeviceButtonColor,
+          buttonIconColor: AppPalette.goldDeviceButtonColor,
           isDark: false,
         );
       case DeviceColor.lime:

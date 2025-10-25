@@ -87,6 +87,18 @@ class AppPalette {
     0xFFF2A300,
   );
 
+  static const Color goldDeviceFrameGradientColor1 = Color(0xFFFFF3C3);
+  static const Color goldDeviceFrameGradientColor2 = Color(0xFFB27700);
+  static const Color goldDeviceControlBackgroundColor = Color(0xFF050505);
+  static const Color goldDeviceControlBorderColor = Color(0xFF1D1D1D);
+  static const Color goldDeviceButtonColor = Color(0xFFF7F7F2);
+  static const Color goldDeviceControlInnerButtonGradientColor1 = Color(
+    0xFFFFE28C,
+  );
+  static const Color goldDeviceControlInnerButtonGradientColor2 = Color(
+    0xFFD08900,
+  );
+
   static const Color limeDeviceFrameGradientColor1 = Color(0xFFE9FF87);
   static const Color limeDeviceFrameGradientColor2 = Color(0xFF3C9E00);
   static const Color limeDeviceControlBorderColor = Color(0xFFA0D94B);

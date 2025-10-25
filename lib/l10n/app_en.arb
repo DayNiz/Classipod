@@ -279,6 +279,10 @@
   "@yellowDeviceColor": {
     "description": "The name of the yellow device color"
   },
+  "goldDeviceColor": "Gold",
+  "@goldDeviceColor": {
+    "description": "The name of the gold device color"
+  },
   "purpleDeviceColor": "Purple",
   "@purpleDeviceColor": {
     "description": "The name of the purple device color"
