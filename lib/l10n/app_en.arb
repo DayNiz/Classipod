@@ -291,13 +291,9 @@
   "@brownDeviceColor": {
     "description": "The name of the brown device color"
   },
-  "lightRedDeviceColor": "Light Red",
-  "@lightRedDeviceColor": {
-    "description": "The name of the light red device color"
-  },
-  "darkRedDeviceColor": "Dark Red",
-  "@darkRedDeviceColor": {
-    "description": "The name of the dark red device color"
+  "redDeviceColor": "Red",
+  "@redDeviceColor": {
+    "description": "The name of the red device color"
   },
   "lightBlueDeviceColor": "Light Blue",
   "@lightBlueDeviceColor": {
