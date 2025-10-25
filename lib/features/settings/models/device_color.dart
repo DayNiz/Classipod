@@ -31,8 +31,8 @@ enum DeviceColor {
   red,
   orange,
   yellow,
-  lightGreen,
-  darkGreen,
+  lime,
+  green,
   lightBlue,
   darkBlue,
   pink,
@@ -45,8 +45,12 @@ enum DeviceColor {
       case 'darkRed':
       case 'red':
         return DeviceColor.red;
+      case 'lime':
+      case 'lightGreen':
+        return DeviceColor.lime;
       case 'green':
-        return DeviceColor.lightGreen;
+      case 'darkGreen':
+        return DeviceColor.green;
       case 'blue':
         return DeviceColor.lightBlue;
       case 'violet':
@@ -72,10 +76,10 @@ enum DeviceColor {
         return context.localization.orangeDeviceColor;
       case yellow:
         return context.localization.yellowDeviceColor;
-      case lightGreen:
-        return context.localization.lightGreenDeviceColor;
-      case darkGreen:
-        return context.localization.darkGreenDeviceColor;
+      case lime:
+        return context.localization.limeDeviceColor;
+      case green:
+        return context.localization.greenDeviceColor;
       case lightBlue:
         return context.localization.lightBlueDeviceColor;
       case darkBlue:
@@ -176,39 +180,38 @@ enum DeviceColor {
           buttonIconColor: AppPalette.yellowDeviceButtonColor,
           isDark: false,
         );
-      case DeviceColor.lightGreen:
+      case DeviceColor.lime:
         return const DeviceColorStyle(
           noiseOpacity: 1,
           frameGradientColors: [
-            AppPalette.lightGreenDeviceFrameGradientColor1,
-            AppPalette.lightGreenDeviceFrameGradientColor2,
+            AppPalette.limeDeviceFrameGradientColor1,
+            AppPalette.limeDeviceFrameGradientColor2,
           ],
           controlBackgroundColor: CupertinoColors.white,
-          controlBorderColor: AppPalette.lightGreenDeviceControlBorderColor,
+          controlBorderColor: AppPalette.limeDeviceControlBorderColor,
           innerButtonGradientColors: [
-            AppPalette.lightGreenDeviceControlInnerButtonGradientColor1,
-            AppPalette.lightGreenDeviceControlInnerButtonGradientColor2,
+            AppPalette.limeDeviceControlInnerButtonGradientColor1,
+            AppPalette.limeDeviceControlInnerButtonGradientColor2,
           ],
-          buttonAccentColor: AppPalette.lightGreenDeviceButtonColor,
-          buttonIconColor: AppPalette.lightGreenDeviceButtonColor,
+          buttonAccentColor: AppPalette.limeDeviceButtonColor,
+          buttonIconColor: AppPalette.limeDeviceButtonColor,
           isDark: false,
         );
-      case DeviceColor.darkGreen:
+      case DeviceColor.green:
         return const DeviceColorStyle(
           noiseOpacity: 0.6,
           frameGradientColors: [
-            AppPalette.darkGreenDeviceFrameGradientColor1,
-            AppPalette.darkGreenDeviceFrameGradientColor2,
+            AppPalette.greenDeviceFrameGradientColor1,
+            AppPalette.greenDeviceFrameGradientColor2,
           ],
-          controlBackgroundColor:
-              AppPalette.darkGreenDeviceControlBackgroundColor,
-          controlBorderColor: AppPalette.darkGreenDeviceControlBorderColor,
+          controlBackgroundColor: AppPalette.greenDeviceControlBackgroundColor,
+          controlBorderColor: AppPalette.greenDeviceControlBorderColor,
           innerButtonGradientColors: [
-            AppPalette.darkGreenDeviceControlInnerButtonGradientColor1,
-            AppPalette.darkGreenDeviceControlInnerButtonGradientColor2,
+            AppPalette.greenDeviceControlInnerButtonGradientColor1,
+            AppPalette.greenDeviceControlInnerButtonGradientColor2,
           ],
-          buttonAccentColor: AppPalette.darkGreenDeviceButtonAccentColor,
-          buttonIconColor: AppPalette.darkGreenDeviceButtonAccentColor,
+          buttonAccentColor: AppPalette.greenDeviceButtonAccentColor,
+          buttonIconColor: AppPalette.greenDeviceButtonAccentColor,
           isDark: true,
         );
       case DeviceColor.lightBlue:

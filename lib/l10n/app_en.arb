@@ -303,13 +303,13 @@
   "@darkBlueDeviceColor": {
     "description": "The name of the dark blue device color"
   },
-  "lightGreenDeviceColor": "Light Green",
-  "@lightGreenDeviceColor": {
-    "description": "The name of the light green device color"
+  "limeDeviceColor": "Lime",
+  "@limeDeviceColor": {
+    "description": "The name of the lime device color"
   },
-  "darkGreenDeviceColor": "Dark Green",
-  "@darkGreenDeviceColor": {
-    "description": "The name of the dark green device color"
+  "greenDeviceColor": "Green",
+  "@greenDeviceColor": {
+    "description": "The name of the green device color"
   },
   "resetSettingsTitle": "Reset Settings",
   "@resetSettingsTitle": {
