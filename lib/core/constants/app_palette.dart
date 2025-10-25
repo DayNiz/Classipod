@@ -96,15 +96,15 @@ class AppPalette {
     0xFFE0C9FF,
   );
 
-  static const Color yellowDeviceFrameGradientColor1 = Color(0xFFFFF9E3);
-  static const Color yellowDeviceFrameGradientColor2 = Color(0xFFFFC107);
-  static const Color yellowDeviceControlBorderColor = Color(0xFFFFE082);
-  static const Color yellowDeviceButtonColor = Color(0xFFB98900);
+  static const Color yellowDeviceFrameGradientColor1 = Color(0xFFFFF0B8);
+  static const Color yellowDeviceFrameGradientColor2 = Color(0xFFF2A300);
+  static const Color yellowDeviceControlBorderColor = Color(0xFFFFC766);
+  static const Color yellowDeviceButtonColor = Color(0xFFB86900);
   static const Color yellowDeviceControlInnerButtonGradientColor1 = Color(
-    0xFFFFF5CC,
+    0xFFFFEDA6,
   );
   static const Color yellowDeviceControlInnerButtonGradientColor2 = Color(
-    0xFFFFD278,
+    0xFFFFC351,
   );
 
   static const Color lightGreenDeviceFrameGradientColor1 = Color(0xFFE2F8EC);
