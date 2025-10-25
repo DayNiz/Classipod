@@ -22,14 +22,6 @@ class _DeviceColorSelectionScreenState extends ConsumerState with CustomScreen {
   List<DeviceColor> get displayItems => DeviceColor.values;
 
   @override
-  void initState() {
-    super.initState();
-    selectedDisplayItem = displayItems.indexOf(
-      ref.read(settingsPreferencesControllerProvider).deviceColor,
-    );
-  }
-
-  @override
   Future<void> onSelectPressed() => _selectColor(selectedDisplayItem);
 
   Future<void> _selectColor(int index) async {
