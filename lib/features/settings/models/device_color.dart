@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 class DeviceColorStyle {
   final double noiseOpacity;
   final List<Color> frameGradientColors;
-  final Color screenBorderColor;
   final Color controlBackgroundColor;
   final Color controlBorderColor;
   final List<Color> innerButtonGradientColors;
@@ -17,7 +16,6 @@ class DeviceColorStyle {
   const DeviceColorStyle({
     required this.noiseOpacity,
     required this.frameGradientColors,
-    required this.screenBorderColor,
     required this.controlBackgroundColor,
     required this.controlBorderColor,
     required this.innerButtonGradientColors,
@@ -101,7 +99,6 @@ enum DeviceColor {
             AppPalette.lightDeviceFrameGradientColor1,
             AppPalette.lightDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.lightDeviceScreenBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.lightDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -119,7 +116,6 @@ enum DeviceColor {
             AppPalette.darkDeviceFrameGradientColor1,
             AppPalette.darkDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.darkDeviceScreenColor,
           controlBackgroundColor: AppPalette.darkDeviceControlBackgroundColor,
           controlBorderColor: CupertinoColors.black,
           innerButtonGradientColors: [
@@ -137,7 +133,6 @@ enum DeviceColor {
             AppPalette.lightRedDeviceFrameGradientColor1,
             AppPalette.lightRedDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.lightRedDeviceControlBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.lightRedDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -155,7 +150,6 @@ enum DeviceColor {
             AppPalette.darkRedDeviceFrameGradientColor1,
             AppPalette.darkRedDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.darkRedDeviceControlBorderColor,
           controlBackgroundColor:
               AppPalette.darkRedDeviceControlBackgroundColor,
           controlBorderColor: AppPalette.darkRedDeviceControlBorderColor,
@@ -174,7 +168,6 @@ enum DeviceColor {
             AppPalette.orangeDeviceFrameGradientColor1,
             AppPalette.orangeDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.orangeDeviceControlBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.orangeDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -192,8 +185,7 @@ enum DeviceColor {
             AppPalette.yellowDeviceFrameGradientColor1,
             AppPalette.yellowDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.yellowDeviceControlBorderColor,
-          controlBackgroundColor: CupertinoColors.white,
+          controlBackgroundColor: AppPalette.yellowDeviceControlBackgroundColor,
           controlBorderColor: AppPalette.yellowDeviceControlBorderColor,
           innerButtonGradientColors: [
             AppPalette.yellowDeviceControlInnerButtonGradientColor1,
@@ -210,7 +202,6 @@ enum DeviceColor {
             AppPalette.lightGreenDeviceFrameGradientColor1,
             AppPalette.lightGreenDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.lightGreenDeviceControlBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.lightGreenDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -228,7 +219,6 @@ enum DeviceColor {
             AppPalette.darkGreenDeviceFrameGradientColor1,
             AppPalette.darkGreenDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.darkGreenDeviceControlBorderColor,
           controlBackgroundColor:
               AppPalette.darkGreenDeviceControlBackgroundColor,
           controlBorderColor: AppPalette.darkGreenDeviceControlBorderColor,
@@ -247,7 +237,6 @@ enum DeviceColor {
             AppPalette.lightBlueDeviceFrameGradientColor1,
             AppPalette.lightBlueDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.lightBlueDeviceControlBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.lightBlueDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -265,7 +254,6 @@ enum DeviceColor {
             AppPalette.darkBlueDeviceFrameGradientColor1,
             AppPalette.darkBlueDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.darkBlueDeviceControlBorderColor,
           controlBackgroundColor:
               AppPalette.darkBlueDeviceControlBackgroundColor,
           controlBorderColor: AppPalette.darkBlueDeviceControlBorderColor,
@@ -284,7 +272,6 @@ enum DeviceColor {
             AppPalette.pinkDeviceFrameGradientColor1,
             AppPalette.pinkDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.pinkDeviceControlBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.pinkDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -302,7 +289,6 @@ enum DeviceColor {
             AppPalette.purpleDeviceFrameGradientColor1,
             AppPalette.purpleDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.purpleDeviceControlBorderColor,
           controlBackgroundColor: CupertinoColors.white,
           controlBorderColor: AppPalette.purpleDeviceControlBorderColor,
           innerButtonGradientColors: [
@@ -320,7 +306,6 @@ enum DeviceColor {
             AppPalette.brownDeviceFrameGradientColor1,
             AppPalette.brownDeviceFrameGradientColor2,
           ],
-          screenBorderColor: AppPalette.brownDeviceControlBorderColor,
           controlBackgroundColor: AppPalette.brownDeviceControlBackgroundColor,
           controlBorderColor: AppPalette.brownDeviceControlBorderColor,
           innerButtonGradientColors: [
