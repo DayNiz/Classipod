@@ -61,8 +61,27 @@ class AudioFilesServiceNotifier
             } else {
               return UnmodifiableListView([]);
             }
+          } else if (Platform.isIOS) {
+            final pickedFiles = await FilePicker.platform.pickFiles(
+              allowMultiple: true,
+              dialogTitle: "Pick Song Files",
+            );
+
+            if (pickedFiles == null || pickedFiles.files.isEmpty) {
+              return UnmodifiableListView([]);
+            }
+
+            final result = await compute(
+              ref
+                  .read(metadataReaderRepositoryProvider)
+                  .extractMetadataFromFiles,
+              pickedFiles.files.map((f) => f.path!).toList(),
+            );
+
+            await metadataBox.addAll(result);
+            return UnmodifiableListView(result);
           }
-          // Android and iOS Automatically Fetch Music Files
+          // On Android Automatically Fetch Music Files
           else {
             final OnAudioQuery audioQuery = OnAudioQuery();
             final queriedSongs = await audioQuery.querySongs();
