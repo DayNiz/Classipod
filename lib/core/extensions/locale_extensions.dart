@@ -366,7 +366,7 @@ extension LocaleExtensions on Locale {
       case "fi":
         return "suomi";
       case "fr":
-        return "français";
+        return "Français";
       case "ff":
         return "Fulfulde";
       case "gl":
